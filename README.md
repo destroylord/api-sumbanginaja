@@ -30,10 +30,10 @@ url : `api/login`
 
 Endpoint : `POST`
 
-```json
+```shell
 {
-	 'status_code' => 200,
-     'token'       => $token
+	'status_code' => 200,
+    'token'       => $token
 }
 ```
 
@@ -43,7 +43,7 @@ url : `api/register`
 
 Endpoint : `POST`
 
-```json
+```shell
 {
     'staatus_code' => 201,
 	'message'      => 'user registered successfully!'
