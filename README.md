@@ -43,7 +43,7 @@ url : `api/register`
 
 Endpoint : `POST`
 
-```
+```json
 {
     'staatus_code' => 201,
 	'message'      => 'user registered successfully!'
