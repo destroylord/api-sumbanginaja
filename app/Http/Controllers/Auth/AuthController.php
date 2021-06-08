@@ -32,6 +32,12 @@ class AuthController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
+        return response()
+                    ->json([
+                        'staatus_code' => 201,
+                        'message'      => 'user registered successfully!'
+                    ]);
+
     }
 
     public function login(Request $request)

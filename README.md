@@ -24,8 +24,34 @@ return untuk mengikuti status code dibawah ini :
 
 authentication Login and Register
 
+#### Login
+
+url : `api/login`
+
+Endpoint : `POST`
+
+```json
+{
+	 'status_code' => 200,
+     'token'       => $token
+}
+```
+
+#### Register
+
+url : `api/register`
+
+Endpoint : `POST`
+
+```
+{
+    'staatus_code' => 201,
+	'message'      => 'user registered successfully!'
+}
+```
+
 
 
 ------
 
-<center>Copyright by Pancakara 2021</center>
+Copyright by Pancakara 2021
