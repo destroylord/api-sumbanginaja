@@ -32,8 +32,8 @@ Endpoint : `POST`
 
 ```shell
 {
-	'status_code' => 200,
-    'token'       => $token
+'status_code' => 200,
+'token'       => $token
 }
 ```
 
@@ -45,8 +45,8 @@ Endpoint : `POST`
 
 ```shell
 {
-    'staatus_code' => 201,
-	'message'      => 'user registered successfully!'
+'staatus_code' => 201,
+'message'      => 'user registered successfully!'
 }
 ```
 

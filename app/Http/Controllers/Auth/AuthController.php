@@ -23,7 +23,7 @@ class AuthController extends Controller
                         ->json([
                             'status_code' => 400,
                             'message'     => 'Bad Request'
-                        ]);
+                        ], 400);
         }
         
         $user = new User();
@@ -36,7 +36,7 @@ class AuthController extends Controller
                     ->json([
                         'staatus_code' => 201,
                         'message'      => 'user registered successfully!'
-                    ]);
+                    ], 201);
 
     }
 
@@ -52,7 +52,7 @@ class AuthController extends Controller
                         ->json([
                             'status_code' => 400,
                             'message'      => 'Bad Request'
-                        ]);
+                        ],400);
         }
 
         $credentials = request(['email', 'password']);
@@ -62,7 +62,7 @@ class AuthController extends Controller
                     ->json([
                         'status_code' => 500,
                         'message'     => 'Unauthorized'
-                    ]);
+                    ],500);
         }
 
         $user = User::where('email', $request->email)->first();
@@ -73,7 +73,7 @@ class AuthController extends Controller
                     ->json([
                         'status_code' => 200,
                         'token'       => $token
-                    ]);
+                    ],200);
     }
 
     public function logout(Request $request)
@@ -84,6 +84,6 @@ class AuthController extends Controller
                     ->json([
                         'status_code' => 200,
                         'message'      => 'Token deteled successfully!'
-                    ]);
+                    ],200);
     }
 }
