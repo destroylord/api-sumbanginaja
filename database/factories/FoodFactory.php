@@ -22,7 +22,9 @@ class FoodFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name,
+            'images' => $this->faker->imageUrl($width = 640, $height = 480),
+            'descriptions' => $this->faker->text($maxNbChars = 200) ,
         ];
     }
 }
