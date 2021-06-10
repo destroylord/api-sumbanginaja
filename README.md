@@ -54,7 +54,7 @@ Endpoint : `POST`
 
 url : `api/v1/foods`
 
-Endpoint : `POST`
+Endpoint : `GET`
 
 ```shell
 {
@@ -64,7 +64,19 @@ Endpoint : `POST`
 }
 ```
 
+#### Community
 
+url : `api/v1/communities`
+
+Endpoint : `GET`
+
+```shell
+{
+    'staatus_code' => 200,
+    'message'      => 'success show data'
+    'data'         => $data
+}
+```
 
 ------
 
