@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\v1\CommunityController;
 use App\Http\Controllers\Api\v1\FoodController as V1FoodController;
+use App\Http\Controllers\Auth\ProfileUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,8 @@ Route::post('/v1/food/create',[V1FoodController::class, 'store']);
 
 Route::group(['prefix' => 'v1','namespace' => 'Api\v1','middleware' => 'auth:sanctum'], function () {
     // return $request->user();
+
+    Route::post('/update-profile', [ProfileUserController::class, 'index']);
 
     Route::post('/logout',[AuthController::class,'logout']);
 });
