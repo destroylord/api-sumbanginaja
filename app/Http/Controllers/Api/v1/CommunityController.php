@@ -54,18 +54,24 @@ class CommunityController extends Controller
                     ],401);
         }
 
-        if ($request->file('images') && $request->file('banners')->isValid()) {
+        if ($request->images && $request->banners->isValid()) {
 
-            // return response('bisa kok');exit;
+            if ($request->images) {
+                $file_name = time(). '.' .$request->images->extension();
+                $request->images->move(public_path('communities/images'), $file_name);
+                $pathImages = 'public/communities/images/'.$file_name;                
+            }
+            if ($request->banners) {
+                $file_name = time(). '.' .$request->banners->extension();
+                $request->banners->move(public_path('communities/banners'), $file_name);
+                $pathBanners = 'public/communities/banners/'.$file_name;                
+            }
 
-            $file_name = time(). '.' .$request->images->extension();
-            $request->images->move(public_path('communities'), $file_name);
-            $path = 'public/communities/'.$file_name;
             
             $attr = $request->all();
 
-            $attr['images'] = request('images');
-            $attr['banners'] = request('banners');
+            $attr['images'] = $pathImages;
+            $attr['banners'] = $pathBanners;
 
             $data = Community::create($attr);
 

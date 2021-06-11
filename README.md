@@ -114,11 +114,11 @@ Endpoint : `POST`
         "name": "iqbual",
         "locations": "tamansari",
         "descriptions": "alkshdajksdkhaskdhkjahsjk",
-        "images": {},
-        "banners": {},
-        "updated_at": "2021-06-11T12:01:34.000000Z",
-        "created_at": "2021-06-11T12:01:34.000000Z",
-        "id": 14
+        "images": "public/communities/images1623413532.png",
+        "banners": "public/communities/banners1623413532.png",
+        "updated_at": "2021-06-11T12:12:12.000000Z",
+        "created_at": "2021-06-11T12:12:12.000000Z",
+        "id": 18
     }
 }
 ```
