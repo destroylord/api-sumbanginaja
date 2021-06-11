@@ -19,8 +19,6 @@ Route::get('/v1/communities', [CommunityController::class,'getAll']);
 
 Route::group(['prefix' => 'v1','namespace' => 'Api\v1','middleware' => 'auth:sanctum'], function () {
     // return $request->user();
-    
-    // Route::get('/foods', )
 
     Route::post('/logout',[AuthController::class,'logout']);
 });
