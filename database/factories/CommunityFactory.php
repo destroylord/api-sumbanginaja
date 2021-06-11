@@ -24,6 +24,7 @@ class CommunityFactory extends Factory
         return [
             'name' => $this->faker->name,
             'images' => $this->faker->imageUrl($width = 640, $height = 480),
+            'banners' => $this->faker->imageUrl($width = 640, $height = 480),
             'locations' => $this->faker->address,
             'descriptions' => $this->faker->text($maxNbChars = 200) ,
         ];
