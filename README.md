@@ -64,6 +64,28 @@ Endpoint : `GET`
 }
 ```
 
+#### Foods
+
+url : `api/food/create`
+
+Endpoint : `POST`
+
+```shell
+{
+    "success": true,
+    "message": "Add Data successfully!",
+    "data": {
+        "name": "dila",
+        "images": "public/foods/1623412641.png",
+        "descriptions": "ajksdhajksdhkjahsdjkhjakshd",
+        "payback_time": "05:05:05",
+        "updated_at": "2021-06-11T11:57:21.000000Z",
+        "created_at": "2021-06-11T11:57:21.000000Z",
+        "id": 13
+    }
+}
+```
+
 #### Community
 
 url : `api/v1/communities`
@@ -75,6 +97,29 @@ Endpoint : `GET`
     'staatus_code' => 200,
     'message'      => 'success show data'
     'data'         => $data
+}
+```
+
+#### Community
+
+url : `v1/community/create`
+
+Endpoint : `POST`
+
+```shell
+{
+    "success": true,
+    "message": "Created successfully!",
+    "data": {
+        "name": "iqbual",
+        "locations": "tamansari",
+        "descriptions": "alkshdajksdkhaskdhkjahsjk",
+        "images": {},
+        "banners": {},
+        "updated_at": "2021-06-11T12:01:34.000000Z",
+        "created_at": "2021-06-11T12:01:34.000000Z",
+        "id": 14
+    }
 }
 ```
 

@@ -18,6 +18,7 @@ class CreateFoodsTable extends Migration
             $table->string('name');
             $table->string('images');
             $table->text('descriptions');
+            $table->time('payback_time');
             $table->timestamps();
         });
     }
