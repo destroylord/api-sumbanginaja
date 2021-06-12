@@ -123,6 +123,51 @@ Endpoint : `POST`
 }
 ```
 
+#### Event
+
+url : `api/v1/events`
+
+Endpoint : `GET`
+
+```shell
+{
+    "message": "show data event",
+    "data": [
+        {
+            "id": 1,
+            "name": "lomba bulatng",
+            "images": "public/events/1623507120.png",
+            "locations": "jln.blindungan",
+            "descriptions": "eqwkjelwq;jkeopwqeiuyqiwy",
+            "created_at": "2021-06-12T14:12:00.000000Z",
+            "updated_at": "2021-06-12T14:12:00.000000Z"
+        }
+    ]
+}
+```
+
+#### Event
+
+url : `v1/Event/create`
+
+Endpoint : `POST`
+
+```shell
+{
+    "success": true,
+    "message": "Add Data successfully!",
+    "data": {
+        "name": "lomba bulatng",
+        "locations": "jln.blindungan",
+        "descriptions": "eqwkjelwq;jkeopwqeiuyqiwy",
+        "images": "public/events/1623507120.png",
+        "updated_at": "2021-06-12T14:12:00.000000Z",
+        "created_at": "2021-06-12T14:12:00.000000Z",
+        "id": 1
+    }
+}
+```
+
 ------
 
 Copyright by Pancakara 2021
