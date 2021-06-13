@@ -15,4 +15,9 @@ class Food extends Model
         'name', 'images', 'descriptions', 'payback_time'
     ];
 
+    public function scopeWhereLike($query, $column, $value)
+    {
+        return $query->where($column, 'like', '%'.$value. '%');
+    }
+
 }

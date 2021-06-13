@@ -21,6 +21,9 @@ Route::get('/v1/foods', [V1FoodController::class, 'getAll']);
 Route::get('/v1/communities', [CommunityController::class,'getAll']);
 Route::get('/v1/events', [EventController::class,'getAll']);
 
+// Search
+Route::get('/v1/foods/{name}', [V1FoodController::class, 'searchFood']);
+
 // POST
 Route::post('/v1/community/create',[CommunityController::class, 'store']);
 Route::post('/v1/food/create',[V1FoodController::class, 'store']);
