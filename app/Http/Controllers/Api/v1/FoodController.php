@@ -26,7 +26,7 @@ class FoodController extends Controller
                     ->json([
                         'status' => false,
                         'message' => 'not found',
-                    ]);
+                    ],404);
         }
 
         // dd($result);
