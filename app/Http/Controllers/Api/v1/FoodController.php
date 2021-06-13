@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\FoodResource;
 use App\Models\Food;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -13,7 +14,7 @@ class FoodController extends Controller
     public function searchFood(Request $request)
     {
         $name   = $request->name;
-        if ($name > 0) {
+        if ($name >= 0) {
             $result = Food::whereLike('name', $name)->get();
             return response()
                     ->json([
@@ -28,8 +29,6 @@ class FoodController extends Controller
                         'message' => 'not found',
                     ],404);
         }
-
-        // dd($result);
     }
 
     public function getAll()
@@ -82,5 +81,15 @@ class FoodController extends Controller
                             'data' => $food
                         ],201);
         }
+    }
+
+    public function show($id)
+    {
+        $food = Food::findOrFail($id);
+        return response()
+                    ->json([
+                        'message'   => 'Retrieved Successfully!',
+                        'data'      => new FoodResource($food)
+                    ],200);
     }
 }

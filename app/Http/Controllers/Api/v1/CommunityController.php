@@ -3,12 +3,46 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CommunityResource;
 use App\Models\Community;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class CommunityController extends Controller
 {
+
+    public function searchCommunity(Request $request)
+    {
+        try {
+            $name   = $request->name;
+            if ($name >= 0) {
+                $result = Community::whereLike('name', $name)->get();
+
+                dd($result);
+                return response()
+                        ->json([
+                            'status'    => true,
+                            'message'   => 'success searching name = ' . $name,
+                            'data'      => $result
+                        ],200);            
+            }else {
+                return response()
+                        ->json([
+                            'status' => false,
+                            'message' => 'not found',
+                        ],404);
+            }
+        } catch (\Exception $e ) {
+            return response()
+            ->json([
+                'status' => false,
+                'message' => $e->getMessage(),
+                'data' => []
+            ],500);
+        }
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -93,7 +127,13 @@ class CommunityController extends Controller
      */
     public function show($id)
     {
-        
+        $community = Community::findOrFail();
+
+        return response()
+        ->json([
+            'message'   => 'Retrieved Successfully!',
+            'data'      => new CommunityResource($community)
+        ],200);
     }
 
     /**

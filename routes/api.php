@@ -23,6 +23,12 @@ Route::get('/v1/events', [EventController::class,'getAll']);
 
 // Search
 Route::get('/v1/foods/{name}', [V1FoodController::class, 'searchFood']);
+Route::get('/v1/community/{name}', [CommunityController::class, 'searchCommunity']);
+
+
+// Get by id
+Route::get('/v1/foods/{food:id}/show', [V1FoodController::class, 'show']);
+Route::get('/v1/community/{id}/show', [CommunityController::class, 'show']);
 
 // POST
 Route::post('/v1/community/create',[CommunityController::class, 'store']);

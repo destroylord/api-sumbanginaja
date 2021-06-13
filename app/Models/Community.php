@@ -9,7 +9,14 @@ class Community extends Model
 {
     use HasFactory;
 
+    protected $table = 'communities';
+
     protected $fillable = [
         'name', 'images', 'banners', 'locations', 'descriptions'
     ];
+
+    public function scopeWhereLike($query, $column, $value)
+    {
+        return $query->where($column, 'like', '%'.$value. '%');
+    }
 }
