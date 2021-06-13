@@ -98,6 +98,39 @@ Endpoint : `POST`
 }
 ```
 
+#### Foods
+
+url : `api/v1/foods/1/show`
+
+Endpoint : `GET`
+
+```shell
+{
+    "message": "Retrieved Successfully!",
+    "data": {
+        "id": 1,
+        "name": "Derrick Donnelly",
+        "images": "https://via.placeholder.com/640x480.png/009911?text=eos",
+        "descriptions": "Nihil doloribus quibusdam rem. At autem placeat atque et maiores. Id a omnis voluptas voluptatem temporibus non autem. Animi neque adipisci cumque quidem velit maiores quia.",
+        "payback_time": "15:39:39",
+        "created_at": "2021-06-12T18:08:59.000000Z",
+        "updated_at": "2021-06-12T18:08:59.000000Z"
+    }
+}
+```
+
+#### Foods
+
+url : `api/v1/foods/9`
+
+Endpoint : `DELETE`
+
+```shell
+{
+    'message' => 'Community deleted'
+}
+```
+
 #### Community
 
 url : `api/v1/communities`
@@ -114,7 +147,7 @@ Endpoint : `GET`
 
 #### Community
 
-url : `v1/community/create`
+url : `api/v1/community/create`
 
 Endpoint : `POST`
 
@@ -132,6 +165,40 @@ Endpoint : `POST`
         "created_at": "2021-06-11T12:12:12.000000Z",
         "id": 18
     }
+}
+```
+
+#### Community
+
+url : `api/v1/community/1/show`
+
+Endpoint : `GET`
+
+```shell
+{
+    "message": "Retrieved Successfully!",
+    "data": {
+        "id": 1,
+        "name": "Jordyn Corkery",
+        "images": "https://via.placeholder.com/640x480.png/009911?text=ullam",
+        "banners": "https://via.placeholder.com/640x480.png/008800?text=eum",
+        "locations": "393 Ruecker Lock Suite 013\nNorth Reuben, MA 09834",
+        "descriptions": "Optio quis voluptatem eos rerum quam et. Vel fugiat qui enim aut soluta. Molestiae commodi sunt animi explicabo neque.",
+        "created_at": "2021-06-12T18:09:00.000000Z",
+        "updated_at": "2021-06-12T18:09:00.000000Z"
+    }
+}
+```
+
+#### Community
+
+url : `api/v1/community/{id}`
+
+Endpoint : `FELETE`
+
+```shell
+{
+    'message' => 'Community deleted'
 }
 ```
 
