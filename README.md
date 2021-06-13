@@ -32,8 +32,20 @@ Endpoint : `POST`
 
 ```shell
 {
-    'status_code' => 200,
-    'token'       => $token
+    "status": true,
+    "message": "Logged in!",
+    "data": {
+        "id": 12,
+        "name": "apin",
+        "email": "sinchan45@gmail.com",
+        "email_verified_at": null,
+        "profile_users": null,
+        "no_handphone": null,
+        "address": null,
+        "created_at": "2021-06-12T19:06:55.000000Z",
+        "updated_at": "2021-06-12T19:06:55.000000Z",
+        "token": "1|ySYWzmdcs2qFaOYGfUrIla8sToZVABUfTR24z5bY"
+    }
 }
 ```
 
@@ -45,8 +57,8 @@ Endpoint : `POST`
 
 ```shell
 {
-    'staatus_code' => 201,
-    'message'      => 'user registered successfully!'
+    "status": true,
+    "message": "Account Created Successfully!"
 }
 ```
 
