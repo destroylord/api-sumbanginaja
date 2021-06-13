@@ -33,7 +33,7 @@ class FoodController extends Controller
 
     public function getAll()
     {
-        $foods = Food::all();
+        $foods = FoodResource::collection(Food::all());
 
         return response()
                     ->json([
@@ -90,6 +90,21 @@ class FoodController extends Controller
                     ->json([
                         'message'   => 'Retrieved Successfully!',
                         'data'      => new FoodResource($food)
+                    ],200);
+    }
+
+    public function update($id)
+    {
+        
+    }
+
+    public function destroy(Food $food)
+    {
+        $food->delete();
+
+        return response()
+                    ->json([
+                        'message' => 'Food deleted'
                     ],200);
     }
 }

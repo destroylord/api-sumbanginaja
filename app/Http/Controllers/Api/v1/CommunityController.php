@@ -127,7 +127,7 @@ class CommunityController extends Controller
      */
     public function show($id)
     {
-        $community = Community::findOrFail();
+        $community = Community::findOrFail($id);
 
         return response()
         ->json([
@@ -154,8 +154,13 @@ class CommunityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Community $community)
     {
-        //
+        $community->delete();
+
+        return response()
+                    ->json([
+                        'message' => 'Community deleted'
+                    ],200);
     }
 }

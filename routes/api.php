@@ -28,12 +28,16 @@ Route::get('/v1/community/{name}', [CommunityController::class, 'searchCommunity
 
 // Get by id
 Route::get('/v1/foods/{food:id}/show', [V1FoodController::class, 'show']);
-Route::get('/v1/community/{id}/show', [CommunityController::class, 'show']);
+Route::get('/v1/community/{community:id}/show', [CommunityController::class, 'show']);
 
 // POST
 Route::post('/v1/community/create',[CommunityController::class, 'store']);
 Route::post('/v1/food/create',[V1FoodController::class, 'store']);
 Route::post('/v1/event/create',[EventController::class, 'store']);
+
+// DELETE
+Route::delete('/v1/community/{community:id}', [CommunityController::class,'destroy']);
+Route::delete('/v1/foods/{food:id}', [V1FoodController::class,'destroy']);
 
 Route::group(['prefix' => 'v1','namespace' => 'Api\v1','middleware' => 'auth:sanctum'], function () {
     // return $request->user();
