@@ -206,6 +206,7 @@
 
 <h2>Community</h2>
 <hr>
+
 <h3>Get all Community</h3>
 
 <p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/v1/communities</a></p>
@@ -215,16 +216,136 @@
 <p>Response : </p>
 <code>
 <pre>
-{
-    "message": "success show data",
-    "data": [
-        {
-            "name": "Randall Ankunding",
-            "images": "https://via.placeholder.com/640x480.png/00ffee?text=quasi",
-            "descriptions": "Impedit natus architecto quia assumenda. Perferendis dignissimos ab blanditiis nihil eos vitae quae."
-        },
-    ]
-}
+    {
+        "message": "success show data",
+        "data": [
+            {
+                "name": "Randall Ankunding",
+                "images": "https://via.placeholder.com/640x480.png/00ffee?text=quasi",
+                "descriptions": "Impedit natus architecto quia assumenda. Perferendis dignissimos ab blanditiis nihil eos vitae quae."
+            },
+        ]
+    }
+</pre>
+</code>
+
+<h3>Create Community</h3>
+
+<p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/v1/community/create</a></p>
+
+<p>Method : <code>POST</code></p>
+
+<p>Response : </p>
+<code>
+<pre>
+    {
+        "success": true,
+        "message": "Created successfully!",
+        "data": {
+            "name": "iqbual",
+            "locations": "tamansari",
+            "descriptions": "alkshdajksdkhaskdhkjahsjk",
+            "images": "public/communities/images1623413532.png",
+            "banners": "public/communities/banners1623413532.png",
+            "updated_at": "2021-06-11T12:12:12.000000Z",
+            "created_at": "2021-06-11T12:12:12.000000Z",
+            "id": 18
+        }
+    }
+</pre>
+</code>
+
+<h3>Get Community By id</h3>
+
+<p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/v1/community/1/show</a></p>
+
+<p>Method : <code>GET</code></p>
+
+<p>Response : </p>
+<code>
+<pre>
+    {
+        "message": "Retrieved Successfully!",
+        "data": {
+            "id": 1,
+            "name": "Jordyn Corkery",
+            "images": "https://via.placeholder.com/640x480.png/009911?text=ullam",
+            "banners": "https://via.placeholder.com/640x480.png/008800?text=eum",
+            "locations": "393 Ruecker Lock Suite 013\nNorth Reuben, MA 09834",
+            "descriptions": "Optio quis voluptatem eos rerum quam et. Vel fugiat qui enim aut soluta. Molestiae commodi sunt animi explicabo neque.",
+            "created_at": "2021-06-12T18:09:00.000000Z",
+            "updated_at": "2021-06-12T18:09:00.000000Z"
+        }
+    }
+</pre>
+</code>
+
+<h3>Delete Community</h3>
+
+<p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/v1/community/10</a></p>
+
+<p>Method : <code>DELETE</code></p>
+
+<p>Response : </p>
+<code>
+<pre>
+    {
+        'message' => 'Community deleted'
+    }
+</pre>
+</code>
+
+<h2>Event</h2>
+<hr>
+
+<h3>Events</h3>
+
+<p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/v1/events/</a></p>
+
+<p>Method : <code>GET</code></p>
+
+<p>Response : </p>
+<code>
+<pre>
+    {
+        "message": "show data event",
+        "data": [
+            {
+                "id": 1,
+                "name": "lomba bulatng",
+                "images": "public/events/1623507120.png",
+                "locations": "jln.blindungan",
+                "descriptions": "eqwkjelwq;jkeopwqeiuyqiwy",
+                "created_at": "2021-06-12T14:12:00.000000Z",
+                "updated_at": "2021-06-12T14:12:00.000000Z"
+            }
+        ]
+    }
+</pre>
+</code>
+
+<h3>Create Event</h3>
+
+<p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/v1/event/create</a></p>
+
+<p>Method : <code>POST</code></p>
+
+<p>Response : </p>
+<code>
+<pre>
+    {
+        "success": true,
+        "message": "Add Data successfully!",
+        "data": {
+            "name": "lomba bulatng",
+            "locations": "jln.blindungan",
+            "descriptions": "eqwkjelwq;jkeopwqeiuyqiwy",
+            "images": "public/events/1623507120.png",
+            "updated_at": "2021-06-12T14:12:00.000000Z",
+            "created_at": "2021-06-12T14:12:00.000000Z",
+            "id": 1
+        }
+    }
 </pre>
 </code>
 
