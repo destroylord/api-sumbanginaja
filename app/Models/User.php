@@ -55,4 +55,9 @@ class User extends Authenticatable
         return $this->hasOne(Community::class);
     }
 
+    public function communities()
+    {
+        return $this->belongsToMany(Community::class);
+    }
+
 }
