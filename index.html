@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <title>Dokumentasi API</title>
+
+    <style>
+    
+   .fixed_button{
+        position: fixed;
+        bottom: 500px;
+        right: 0;
+        width: 100px;
+        height: auto;
+        padding: 25px;
+        border: none;
+        border-radius: 10px 0 0 10px;
+        color: white;
+        font-weight: bold;
+        background-color: #383d4b;
+        z-index: 99;
+        -webkit-transform: translate3d(0,0,0);
+        -webkit-transition: all .25s ease;
+        -moz-transition: all .25s ease;
+        -ms-transition: all .25s ease;
+        -o-transition: all .25s ease;
+        transition: all .25s ease;
+        text-align: left;
+    }
+    </style>
+  </head>
+  <body>
+    
+
+<div class="container p-4 mt-2">
+    <div class="fixed-button">
+         <button class="fixed_button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop">Book</button>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+<h1 class="mt-3">Api sumbangin aja </h1>
+
+<br><br>
+
+<h3 id="auth">Auth</h3>
+<hr>
+
+
+<h3>Login</h3>
+
+<p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/login</a></p>
+
+<p>Method : <code>POST</code></p>
+
+<p> Response :  </p>
+<code>
+<pre>
+    {
+        "status": true,
+        "message": "Logged in!",
+        "data": {
+            "id": 12,
+            "name": "apin",
+            "email": "sinchan45@gmail.com",
+            "email_verified_at": null,
+            "profile_users": null,
+            "no_handphone": null,
+            "address": null,
+            "created_at": "2021-06-12T19:06:55.000000Z",
+            "updated_at": "2021-06-12T19:06:55.000000Z",
+            "token": "1|ySYWzmdcs2qFaOYGfUrIla8sToZVABUfTR24z5bY"
+        }
+    }
+</pre>
+</code>
+
+<h3>Register</h3>
+
+<p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/register</a></p>
+
+<p>Method : <code>POST</code></p>
+
+<p>Response : </p>
+<code>
+<pre>
+    {
+        "status": true,
+        "message": "Account Created Successfully!"
+    }
+</pre>
+</code>
+
+
+<h3>Profile Detail</h3>
+
+<p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/v1/get-profile</a></p>
+
+<p>Method : <code>GET</code></p>
+
+<p>Response : </p>
+<code>
+<pre>
+    {
+        "status": true,
+        "message": "Account Created Successfully!"
+    }
+</pre>
+</code>
+
+<h3>Logout</h3>
+
+<p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/v1/logout</a></p>
+
+<p>Method : <code>POST</code></p>
+
+<p>Response : </p>
+<code>
+<pre>
+    {
+        "status": true,
+        "message": "Account Logout Successfully!"
+    }
+</pre>
+</code>
+
+<h3>Update Proflie</h3>
+
+<p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/v1/update-profile</a></p>
+
+<p>Method : <code>POST</code></p>
+
+<p>Response : </p>
+<code>
+<pre>
+    {
+        "status": true,
+        "message": "Account Updated Successfully!"
+    }
+</pre>
+</code>
+
+
+
+<h2 id="food">Food</h2>
+<hr>
+
+<h3>All Food</h3>
+
+<p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/v1/foods</a></p>
+
+<p>Method : <code>GET</code></p>
+
+<p>Response : </p>
+<code>
+<pre>
+    {
+        "message": "show data foods",
+        "data": [
+            {
+                "id": 1,
+                "user_id": 1,
+                "name": "dila",
+                "images": "public/foods/1623818333.png",
+                "descriptions": "ajksdhajksdhkjahsdjkhjakshd",
+                "payback_time": "05:05:05",
+                "created_at": "2021-06-16T04:38:53.000000Z",
+                "updated_at": "2021-06-16T04:38:53.000000Z",
+                "user": {
+                    "id": 1,
+                    "name": "apin",
+                    "email": "sinchan45@gmail.com",
+                    "email_verified_at": null,
+                    "profile_users": null,
+                    "no_handphone": null,
+                    "address": null,
+                    "created_at": "2021-06-16T04:36:00.000000Z",
+                    "updated_at": "2021-06-16T04:36:00.000000Z"
+                }
+            },
+            {
+                "id": 2,
+                "user_id": 2,
+                "name": "Dafrin",
+                "images": "public/foods/1623818485.jpg",
+                "descriptions": "ajksdhajksdhkjahsdjkhjakshd",
+                "payback_time": "05:05:05",
+                "created_at": "2021-06-16T04:41:25.000000Z",
+                "updated_at": "2021-06-16T04:41:25.000000Z",
+                "user": {
+                    "id": 2,
+                    "name": "Dafrin M",
+                    "email": "dafrin@gmail.com",
+                    "email_verified_at": null,
+                    "profile_users": null,
+                    "no_handphone": null,
+                    "address": null,
+                    "created_at": "2021-06-16T04:39:59.000000Z",
+                    "updated_at": "2021-06-16T04:39:59.000000Z"
+                }
+            }
+        ]
+    }
+</pre>
+</code>
+
+<h3>Create Food</h3>
+
+<p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/v1/food/create</a></p>
+
+<p>Method : <code>POST</code></p>
+
+<p>Response : </p>
+<code>
+<pre>
+    {
+        "success": true,
+        "message": "Add Data successfully!",
+        "data": {
+            "name": "Dafrin",
+            "images": "public/foods/1623818723.jpg",
+            "descriptions": "ajksdhajksdhkjahsdjkhjakshd",
+            "payback_time": "05:05:05",
+            "user_id": 2,
+            "updated_at": "2021-06-16T04:45:23.000000Z",
+            "created_at": "2021-06-16T04:45:23.000000Z",
+            "id": 3
+        }
+    }
+</pre>
+</code>
+
+<h3>Get Food by id</h3>
+
+<p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/v1/foods/1/show</a></p>
+
+<p>Method : <code>GET</code></p>
+
+<p>Response : </p>
+<code>
+<pre>
+    {
+        "message": "Retrieved Successfully!",
+        "data": {
+            "id": 1,
+            "user_id": 1,
+            "name": "dila",
+            "images": "public/foods/1623818333.png",
+            "descriptions": "ajksdhajksdhkjahsdjkhjakshd",
+            "payback_time": "05:05:05",
+            "created_at": "2021-06-16T04:38:53.000000Z",
+            "updated_at": "2021-06-16T04:38:53.000000Z",
+            "user": {
+                "id": 1,
+                "name": "apin",
+                "email": "sinchan45@gmail.com",
+                "email_verified_at": null,
+                "profile_users": null,
+                "no_handphone": null,
+                "address": null,
+                "created_at": "2021-06-16T04:36:00.000000Z",
+                "updated_at": "2021-06-16T04:36:00.000000Z"
+            }
+        }
+    }
+</pre>
+</code>
+
+<h3>Delete Food</h3>
+
+<p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/v1/foods/9</a></p>
+
+<p>Method : <code>DELETE</code></p>
+
+<p>Response : </p>
+<code>
+<pre>
+    {
+        'message' => 'Food deleted'
+    }
+</pre>
+</code>
+
+<h2 id="community">Community</h2>
+<hr>
+
+<h3>Get all Community</h3>
+
+<p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/v1/communities</a></p>
+
+<p>Method : <code>GET</code></p>
+
+<p>Response : </p>
+<code>
+<pre>
+    {
+        "message": "success show data",
+        "data": [
+            {
+                "name": "Randall Ankunding",
+                "images": "https://via.placeholder.com/640x480.png/00ffee?text=quasi",
+                "descriptions": "Impedit natus architecto quia assumenda. Perferendis dignissimos ab blanditiis nihil eos vitae quae."
+            },
+        ]
+    }
+</pre>
+</code>
+
+<h3>Create Community</h3>
+
+<p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/v1/community/create</a></p>
+
+<p>Method : <code>POST</code></p>
+
+<p>Response : </p>
+<code>
+<pre>
+    {
+        "success": true,
+        "message": "Created successfully!",
+        "data": {
+            "name": "iqbual",
+            "locations": "tamansari",
+            "descriptions": "alkshdajksdkhaskdhkjahsjk",
+            "images": "public/communities/images/1623824217.png",
+            "banners": "public/communities/banners/1623824217.png",
+            "user_id": 1,
+            "updated_at": "2021-06-16T06:16:57.000000Z",
+            "created_at": "2021-06-16T06:16:57.000000Z",
+            "id": 2
+        }
+    }
+</pre>
+</code>
+
+<h3>Get Community By id</h3>
+
+<p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/v1/community/1/show</a></p>
+
+<p>Method : <code>GET</code></p>
+
+<p>Response : </p>
+<code>
+<pre>
+    {
+        "message": "Retrieved Successfully!",
+        "data": {
+            "id": 1,
+            "name": "iqbual",
+            "images": "public/communities/images/1623823834.jpg",
+            "banners": "public/communities/banners/1623823834.png",
+            "locations": "tamansari",
+            "descriptions": "alkshdajksdkhaskdhkjahsjk",
+            "user_id": 1,
+            "created_at": "2021-06-16T06:10:34.000000Z",
+            "updated_at": "2021-06-16T06:10:34.000000Z",
+            "user": {
+                "id": 1,
+                "name": "Dafrin M",
+                "email": "dafrin@gmail.com",
+                "email_verified_at": null,
+                "profile_users": null,
+                "no_handphone": null,
+                "address": null,
+                "created_at": "2021-06-16T06:07:54.000000Z",
+                "updated_at": "2021-06-16T06:07:54.000000Z"
+            }
+        }
+    }
+</pre>
+</code>
+
+<h3>Delete Community</h3>
+
+<p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/v1/community/10</a></p>
+
+<p>Method : <code>DELETE</code></p>
+
+<p>Response : </p>
+<code>
+<pre>
+    {
+        'message' => 'Community deleted'
+    }
+</pre>
+</code>
+
+<h2 id="event">Event</h2>
+<hr>
+
+<h3>Events</h3>
+
+<p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/v1/events/</a></p>
+
+<p>Method : <code>GET</code></p>
+
+<p>Response : </p>
+<code>
+<pre>
+    {
+        "message": "show data event",
+        "data": [
+            {
+                "id": 1,
+                "name": "lomba bulatng",
+                "images": "public/events/1623507120.png",
+                "locations": "jln.blindungan",
+                "descriptions": "eqwkjelwq;jkeopwqeiuyqiwy",
+                "created_at": "2021-06-12T14:12:00.000000Z",
+                "updated_at": "2021-06-12T14:12:00.000000Z"
+            }
+        ]
+    }
+</pre>
+</code>
+
+<h3>Create Event</h3>
+
+<p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/v1/event/create</a></p>
+
+<p>Method : <code>POST</code></p>
+
+<p>Response : </p>
+<code>
+<pre>
+    {
+        "success": true,
+        "message": "Add Data successfully!",
+        "data": {
+            "name": "lomba bulatng",
+            "locations": "jln.blindungan",
+            "descriptions": "eqwkjelwq;jkeopwqeiuyqiwy",
+            "images": "public/events/1623507120.png",
+            "updated_at": "2021-06-12T14:12:00.000000Z",
+            "created_at": "2021-06-12T14:12:00.000000Z",
+            "id": 1
+        }
+    }
+</pre>
+</code>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">Table of Content</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul>
+            <li><a href="#auth">Auth</a></li>
+            <li><a href="#food">Food</a></li>
+            <li><a href="#community">Community</a></li>
+            <li><a href="#event">Event</a></li>
+        </ul>
+    </div>
+</div>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

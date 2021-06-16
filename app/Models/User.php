@@ -23,7 +23,7 @@ class User extends Authenticatable
         'password',
         'profile_users',
         'no_handphone',
-        'address'
+        'address',
     ];
 
     /**
@@ -44,4 +44,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function foods()
+    {
+        return $this->hasMany(Food::class);
+    }
+
+    public function community()
+    {
+        return $this->hasOne(Community::class);
+    }
+
+    public function communities()
+    {
+        return $this->belongsToMany(Community::class);
+    }
+
 }

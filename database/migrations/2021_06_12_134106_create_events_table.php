@@ -19,7 +19,12 @@ class CreateEventsTable extends Migration
             $table->string('images');
             $table->string('locations');
             $table->longText('descriptions');
+            $table->integer('community_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('community_id')
+                        ->references('id')
+                        ->on('communities');
         });
     }
 

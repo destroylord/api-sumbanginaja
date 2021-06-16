@@ -20,6 +20,7 @@ class CreateCommunitiesTable extends Migration
             $table->string('banners');
             $table->string('locations');
             $table->text('descriptions');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }

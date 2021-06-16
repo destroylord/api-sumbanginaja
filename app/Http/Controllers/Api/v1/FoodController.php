@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\FoodResource;
 use App\Models\Food;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class FoodController extends Controller
@@ -33,7 +34,7 @@ class FoodController extends Controller
 
     public function getAll()
     {
-        $foods = FoodResource::collection(Food::all());
+        $foods = FoodResource::collection(Food::with('user')->get());
 
         return response()
                     ->json([
@@ -72,6 +73,7 @@ class FoodController extends Controller
             $food->images = $path;
             $food->descriptions = $request->descriptions;
             $food->payback_time = $request->payback_time;
+            $food->user_id = Auth::user()->id;
             $food->save();
 
             return response()
@@ -85,7 +87,7 @@ class FoodController extends Controller
 
     public function show($id)
     {
-        $food = Food::findOrFail($id);
+        $food = Food::with('user')->findOrFail($id);
         return response()
                     ->json([
                         'message'   => 'Retrieved Successfully!',

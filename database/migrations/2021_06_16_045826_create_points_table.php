@@ -1,10 +1,11 @@
 <?php
 
+use Facade\Ignition\Tabs\Tab;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFoodsTable extends Migration
+class CreatePointsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +14,11 @@ class CreateFoodsTable extends Migration
      */
     public function up()
     {
-        Schema::create('foods', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('points', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('user_id');
-            $table->string('name');
-            $table->string('images');
-            $table->text('descriptions');
-            $table->time('payback_time');
+            $table->string('number_of_points'); # jumlah point
+            $table->string('point_type'); # jenis point
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateFoodsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('foods');
+        Schema::dropIfExists('points');
     }
 }
