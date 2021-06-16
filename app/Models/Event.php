@@ -12,4 +12,9 @@ class Event extends Model
     protected $fillable = [
         'name', 'images', 'locations', 'descriptions'
     ];
+
+    public function community()
+    {
+        return $this->belongsTo(Community::class);
+    }
 }

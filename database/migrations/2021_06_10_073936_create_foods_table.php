@@ -15,6 +15,7 @@ class CreateFoodsTable extends Migration
     {
         Schema::create('foods', function (Blueprint $table) {
             $table->increments('id');
+            $table->foreignId('user_id');
             $table->string('name');
             $table->string('images');
             $table->text('descriptions');

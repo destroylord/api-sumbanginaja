@@ -97,7 +97,7 @@
 <pre>
     {
         "status": true,
-        "message": "Account Created Successfully!"
+        "message": "Account Logout Successfully!"
     }
 </pre>
 </code>
@@ -113,7 +113,7 @@
 <pre>
     {
         "status": true,
-        "message": "Account Created Successfully!"
+        "message": "Account Updated Successfully!"
     }
 </pre>
 </code>
@@ -133,9 +133,51 @@
 <code>
 <pre>
     {
-        'staatus_code' => 200,
-        'message'      => 'show data food'
-        'data'         => $data
+        "message": "show data foods",
+        "data": [
+            {
+                "id": 1,
+                "user_id": 1,
+                "name": "dila",
+                "images": "public/foods/1623818333.png",
+                "descriptions": "ajksdhajksdhkjahsdjkhjakshd",
+                "payback_time": "05:05:05",
+                "created_at": "2021-06-16T04:38:53.000000Z",
+                "updated_at": "2021-06-16T04:38:53.000000Z",
+                "user": {
+                    "id": 1,
+                    "name": "apin",
+                    "email": "sinchan45@gmail.com",
+                    "email_verified_at": null,
+                    "profile_users": null,
+                    "no_handphone": null,
+                    "address": null,
+                    "created_at": "2021-06-16T04:36:00.000000Z",
+                    "updated_at": "2021-06-16T04:36:00.000000Z"
+                }
+            },
+            {
+                "id": 2,
+                "user_id": 2,
+                "name": "Dafrin",
+                "images": "public/foods/1623818485.jpg",
+                "descriptions": "ajksdhajksdhkjahsdjkhjakshd",
+                "payback_time": "05:05:05",
+                "created_at": "2021-06-16T04:41:25.000000Z",
+                "updated_at": "2021-06-16T04:41:25.000000Z",
+                "user": {
+                    "id": 2,
+                    "name": "Dafrin M",
+                    "email": "dafrin@gmail.com",
+                    "email_verified_at": null,
+                    "profile_users": null,
+                    "no_handphone": null,
+                    "address": null,
+                    "created_at": "2021-06-16T04:39:59.000000Z",
+                    "updated_at": "2021-06-16T04:39:59.000000Z"
+                }
+            }
+        ]
     }
 </pre>
 </code>
@@ -153,13 +195,14 @@
         "success": true,
         "message": "Add Data successfully!",
         "data": {
-            "name": "dila",
-            "images": "public/foods/1623412641.png",
+            "name": "Dafrin",
+            "images": "public/foods/1623818723.jpg",
             "descriptions": "ajksdhajksdhkjahsdjkhjakshd",
             "payback_time": "05:05:05",
-            "updated_at": "2021-06-11T11:57:21.000000Z",
-            "created_at": "2021-06-11T11:57:21.000000Z",
-            "id": 13
+            "user_id": 2,
+            "updated_at": "2021-06-16T04:45:23.000000Z",
+            "created_at": "2021-06-16T04:45:23.000000Z",
+            "id": 3
         }
     }
 </pre>
@@ -178,12 +221,24 @@
         "message": "Retrieved Successfully!",
         "data": {
             "id": 1,
-            "name": "Derrick Donnelly",
-            "images": "https://via.placeholder.com/640x480.png/009911?text=eos",
-            "descriptions": "Nihil doloribus quibusdam rem. At autem placeat atque et maiores. Id a omnis voluptas voluptatem temporibus non autem. Animi neque adipisci cumque quidem velit maiores quia.",
-            "payback_time": "15:39:39",
-            "created_at": "2021-06-12T18:08:59.000000Z",
-            "updated_at": "2021-06-12T18:08:59.000000Z"
+            "user_id": 1,
+            "name": "dila",
+            "images": "public/foods/1623818333.png",
+            "descriptions": "ajksdhajksdhkjahsdjkhjakshd",
+            "payback_time": "05:05:05",
+            "created_at": "2021-06-16T04:38:53.000000Z",
+            "updated_at": "2021-06-16T04:38:53.000000Z",
+            "user": {
+                "id": 1,
+                "name": "apin",
+                "email": "sinchan45@gmail.com",
+                "email_verified_at": null,
+                "profile_users": null,
+                "no_handphone": null,
+                "address": null,
+                "created_at": "2021-06-16T04:36:00.000000Z",
+                "updated_at": "2021-06-16T04:36:00.000000Z"
+            }
         }
     }
 </pre>
@@ -362,7 +417,7 @@
 
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">Hayuuu</h5>
+        <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">Table of Content</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">

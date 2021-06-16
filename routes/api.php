@@ -8,44 +8,51 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-
-// Login
-Route::post('/register', [AuthController::class,'register']);
-Route::post('/login', [AuthController::class,'login']);
-Route::post('/login-oauth', [AuthController::class,'login_oauth']);
-
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
 
-// GET
-Route::get('/v1/foods', [V1FoodController::class, 'getAll']);
-Route::get('/v1/communities', [CommunityController::class,'getAll']);
-Route::get('/v1/events', [EventController::class,'getAll']);
 
-// Search
-Route::get('/v1/foods/{name}', [V1FoodController::class, 'searchFood']);
-Route::get('/v1/community/{name}', [CommunityController::class, 'searchCommunity']);
+// Login
+Route::post('/register', [AuthController::class,'register']);
+Route::post('/login', [AuthController::class,'login']);
+Route::post('/login-google', [AuthController::class,'login_google']);
 
-
-// Get by id
-Route::get('/v1/foods/{food:id}/show', [V1FoodController::class, 'show']);
-Route::get('/v1/community/{community:id}/show', [CommunityController::class, 'show']);
-
-// POST
-Route::post('/v1/community/create',[CommunityController::class, 'store']);
-Route::post('/v1/food/create',[V1FoodController::class, 'store']);
-Route::post('/v1/event/create',[EventController::class, 'store']);
-
-// DELETE
-Route::delete('/v1/community/{community:id}', [CommunityController::class,'destroy']);
-Route::delete('/v1/foods/{food:id}', [V1FoodController::class,'destroy']);
 
 Route::group(['prefix' => 'v1','namespace' => 'Api\v1','middleware' => 'auth:sanctum'], function () {
     // return $request->user();
 
+    /**
+     * Searing foods and community
+     */
+    Route::get('/foods/{name}', [V1FoodController::class, 'searchFood']);
+    Route::get('/community/{name}', [CommunityController::class, 'searchCommunity']);
+
+
+    /**
+     * Foods
+     */
+        Route::get('/foods', [V1FoodController::class, 'getAll']);
+        Route::get('/foods/{food:id}/show', [V1FoodController::class, 'show']);
+        Route::post('/food/create',[V1FoodController::class, 'store']);
+        Route::delete('/foods/{food:id}', [V1FoodController::class,'destroy']);
+
+    /**
+     * Community
+     */
+        Route::get('/communities', [CommunityController::class,'getAll']);
+        Route::get('/community/{community:id}/show', [CommunityController::class, 'show']);
+        Route::post('/community/create',[CommunityController::class, 'store']);
+        Route::delete('/community/{community:id}', [CommunityController::class,'destroy']);
+
+     /**
+      * Event
+      */
+        Route::get('/events', [EventController::class,'getAll']);
+        Route::post('/event/create',[EventController::class, 'store']);
+
+    // Profile
     Route::get('/get-profile', [ProfileUserController::class,'getProfile']);
     Route::post('/update-profile', [ProfileUserController::class, 'updateProfile']);
-
     Route::post('/logout',[AuthController::class,'logout']);
 });

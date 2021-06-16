@@ -20,4 +20,9 @@ class Food extends Model
         return $query->where($column, 'like', '%'.$value. '%');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

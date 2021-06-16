@@ -19,4 +19,9 @@ class Community extends Model
     {
         return $query->where($column, 'like', '%'.$value. '%');
     }
+
+    public function event()
+    {
+        return $this->hasOne(Event::class);
+    }
 }
