@@ -22,11 +22,12 @@ class CommunityFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
-            'images' => $this->faker->imageUrl($width = 640, $height = 480),
-            'banners' => $this->faker->imageUrl($width = 640, $height = 480),
-            'locations' => $this->faker->address,
-            'descriptions' => $this->faker->text($maxNbChars = 200) ,
+            'name'          => $this->faker->name,
+            'images'        => $this->faker->imageUrl($width = 640, $height = 480),
+            'banners'       => $this->faker->imageUrl($width = 640, $height = 480),
+            'user_id'       => rand(1,4),
+            'locations'     => $this->faker->address,
+            'descriptions'  => $this->faker->text($maxNbChars = 200) ,
         ];
     }
 }

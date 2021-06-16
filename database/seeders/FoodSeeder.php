@@ -17,11 +17,5 @@ class FoodSeeder extends Seeder
     public function run()
     {
         \App\Models\Food::factory(10)->create();
-        // DB::table('foods')->insert([
-        //     'name' => 'Roti Bakar',
-        //     'images' => 'img.jpg',
-        //     'descriptions' => 'roti bakar enak sip',
-        //     'payback_time' => "2017-08-15 19:30:10"
-        // ]);
     }
 }
