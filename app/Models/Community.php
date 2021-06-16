@@ -12,7 +12,12 @@ class Community extends Model
     protected $table = 'communities';
 
     protected $fillable = [
-        'name', 'images', 'banners', 'locations', 'descriptions'
+        'name', 
+        'images', 
+        'banners', 
+        'locations', 
+        'descriptions', 
+        'user_id'
     ];
 
     public function scopeWhereLike($query, $column, $value)
@@ -23,5 +28,10 @@ class Community extends Model
     public function event()
     {
         return $this->hasOne(Event::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

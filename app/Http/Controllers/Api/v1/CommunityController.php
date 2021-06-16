@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\CommunityResource;
 use App\Models\Community;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class CommunityController extends Controller
@@ -104,8 +105,9 @@ class CommunityController extends Controller
             
             $attr = $request->all();
 
-            $attr['images'] = $pathImages;
-            $attr['banners'] = $pathBanners;
+            $attr['images']     = $pathImages;
+            $attr['banners']    = $pathBanners;
+            $attr['user_id']    = Auth::user()->id;
 
             $data = Community::create($attr);
 
@@ -127,7 +129,7 @@ class CommunityController extends Controller
      */
     public function show($id)
     {
-        $community = Community::findOrFail($id);
+        $community = Community::with('user')->findOrFail($id);
 
         return response()
         ->json([

@@ -23,7 +23,7 @@ class User extends Authenticatable
         'password',
         'profile_users',
         'no_handphone',
-        'address'
+        'address',
     ];
 
     /**
@@ -49,4 +49,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Food::class);
     }
+
+    public function community()
+    {
+        return $this->hasOne(Community::class);
+    }
+
 }
