@@ -8,39 +8,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-<<<<<<< HEAD
-Route::post('/register', [AuthController::class,'register']);   
-Route::post('/login', [AuthController::class,'login']);
 Route::post('/login-oauth', [AuthController::class,'login_oauth']);
 Route::post('/daftar', [AuthController::class, 'store']);
 
-=======
->>>>>>> 7c9a1464456eab3d8fe1db25bbda69efa6c9c561
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
 
 
-<<<<<<< HEAD
-// Get by id
-Route::get('/v1/foods/{food:id}/show', [V1FoodController::class, 'show']);
-Route::get('/v1/community/{community:id}/show', [CommunityController::class, 'show']);
-
-// POST
-Route::post('/v1/community/create',[CommunityController::class, 'store']);
-Route::post('/v1/food/create',[V1FoodController::class, 'store']);
-Route::post('/v1/event/create',[EventController::class, 'store']);
-
-// DELETE
-Route::delete('/v1/community/{community:id}', [CommunityController::class,'destroy']);
-Route::delete('/v1/foods/{food:id}', [V1FoodController::class,'destroy']);
-=======
 // Login
 Route::post('/register', [AuthController::class,'register']);
 Route::post('/login', [AuthController::class,'login']);
 Route::post('/login-google', [AuthController::class,'login_google']);
 
->>>>>>> 7c9a1464456eab3d8fe1db25bbda69efa6c9c561
 
 Route::group(['prefix' => 'v1','namespace' => 'Api\v1','middleware' => 'auth:sanctum'], function () {
     // return $request->user();
