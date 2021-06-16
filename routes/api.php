@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-
-Route::post('/register', [AuthController::class,'register']);
+Route::post('/register', [AuthController::class,'register']);   
 Route::post('/login', [AuthController::class,'login']);
+Route::post('/login-oauth', [AuthController::class,'login_oauth']);
+Route::post('/daftar', [AuthController::class, 'store']);
 
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
@@ -24,7 +25,6 @@ Route::get('/v1/events', [EventController::class,'getAll']);
 // Search
 Route::get('/v1/foods/{name}', [V1FoodController::class, 'searchFood']);
 Route::get('/v1/community/{name}', [CommunityController::class, 'searchCommunity']);
-
 
 // Get by id
 Route::get('/v1/foods/{food:id}/show', [V1FoodController::class, 'show']);

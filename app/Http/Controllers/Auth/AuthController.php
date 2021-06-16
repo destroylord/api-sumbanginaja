@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator as FacadesValidator;
@@ -17,7 +19,8 @@ class AuthController extends Controller
             $validator = FacadesValidator::make($request->all(), [
                 'name'      => 'required|min:2|max:45',
                 'email'     => 'required|email|unique:users',
-                'password'  => 'required|min:8|max:45'
+                'password'  => 'required|min:8|max:45',
+                'type'      => 'required'
             ]);
             
             if ($validator->fails()) {
@@ -52,6 +55,45 @@ class AuthController extends Controller
                         ],500);
         }
 
+    }
+
+    public function store(Request $request) {
+        $user = new User;
+
+        $rules = [
+            'name' => 'required|min:2|max:45',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8|max:45',
+            'type' => 'required'
+        ];
+        $data = User::where("email", $request->email)->count();
+        if($data>0) {
+            return response([
+                'response' => 'Duplicate Email'
+            ], 400) -> header('Content-Type', 'application/json');
+        } else {
+            $validator = FacadesValidator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                return $validator->errors();
+            } else {
+                $user->name = $request->name;
+                $user->email = $request->email;
+                $user->password = Hash::make($request->password);
+                $user->type = $request->type;
+                $result = $user->save();
+                if($result){
+                    return response([
+                        'status' => true,
+                        'message' => 'Berhasil'
+                    ], 200);
+                } else {
+                    return response([
+                        'status' => false,
+                        'response' => 'Gagal'
+                    ], 400);
+                }
+            }
+        }
     }
 
     public function login(Request $request)
@@ -112,6 +154,28 @@ class AuthController extends Controller
                         ]);
         }
 
+    }
+
+    public function login_oauth(Request $request) {
+        $user = new User;
+        $user = User::where("email", $request->email)->first();
+
+        if(!$user) {
+            return response([
+                'message' => 'Data tidak terdaftar'
+            ], 400);
+        } else {
+            $user = User::where('id', $user->id)->first();
+            if($user->type==="oauth") {
+                return response([
+                    'user' => $user
+                ], 200);
+            } else {
+                return response([
+                    'message' => 'Please login using email and password'
+                ], 400);
+            }
+        }
     }
 
     public function logout(Request $request)
