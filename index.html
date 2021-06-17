@@ -33,6 +33,16 @@
         transition: all .25s ease;
         text-align: left;
     }
+    .footer {
+        padding: 20px;
+        text-align: center;
+        height: 200px;
+        background-color: #f8f8f8;
+    }
+    .footer p {
+        margin-top: 50px;
+        font-size: 18px;
+    }
     </style>
   </head>
   <body>
@@ -444,6 +454,82 @@
 </pre>
 </code>
 
+<h2 id="other">Other</h2>
+<hr>
+
+<h3>Searching Foods</h3>
+
+<p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/v1/foods/{name}</a></p>
+
+<p>Method : <code>GET</code></p>
+
+<p>Response : </p>
+<code>
+<pre>
+    {
+        "status": true,
+        "message": "success searching name = Freddie Hills",
+        "data": [
+            {
+                "id": 1,
+                "user_id": 3,
+                "name": "Freddie Hills",
+                "images": "https://via.placeholder.com/640x480.png/0066aa?text=tempora",
+                "descriptions": "Dolore quasi aut ea architecto. Quis dicta soluta ad laboriosam ipsa vitae. Consequatur praesentium consectetur perspiciatis repellendus. Sequi labore quia a esse accusamus.",
+                "payback_time": "05:38:18",
+                "created_at": "2021-06-17T06:11:11.000000Z",
+                "updated_at": "2021-06-17T06:11:11.000000Z"
+            }
+        ]
+    }
+</pre>
+</code>
+
+<h3>Searching Community</h3>
+
+<p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/v1/community/{name}</a></p>
+
+<p>Method : <code>GET</code></p>
+
+<p>Response : </p>
+<code>
+<pre>
+    {
+        "status": true,
+        "message": "success searching name = Emilie Wintheiser",
+        "data": [
+            {
+                "id": 1,
+                "name": "Emilie Wintheiser",
+                "images": "https://via.placeholder.com/640x480.png/00aa77?text=sit",
+                "banners": "https://via.placeholder.com/640x480.png/0033cc?text=aut",
+                "locations": "58933 Farrell Knoll\nReichertfort, NJ 77972",
+                "descriptions": "Consequatur voluptas eligendi aliquid accusamus voluptatibus libero fuga. Odit ipsam officia aut deserunt aspernatur aut. Assumenda neque itaque laborum provident at.",
+                "user_id": 2,
+                "created_at": "2021-06-17T06:11:12.000000Z",
+                "updated_at": "2021-06-17T06:11:12.000000Z"
+            }
+        ]
+    }
+</pre>
+</code>
+
+<h3>User join to Community</h3>
+
+<p>Url : <a href="javascript:void(0)">http://127.0.0.1:8000/api/v1//userJoinCommunity</a></p>
+
+<p>Method : <code>POST</code></p>
+
+<p>Response : </p>
+<code>
+<pre>
+    {
+        'status'    => true,
+        'message'   => 'success join cummunity',
+    }
+</pre>
+</code>
+
         </div>
     </div>
 </div>
@@ -460,8 +546,21 @@
             <li><a href="#food">Food</a></li>
             <li><a href="#community">Community</a></li>
             <li><a href="#event">Event</a></li>
+            <hr>
+            <li><a href="#other">Other</a>
+                <ul>
+                    <li>Searching Food</li>
+                    <li>Searching Community</li>
+                    <li>User join to Community</li>
+                </ul>
+            </li>
         </ul>
     </div>
+</div>
+<div class="footer">
+    <p>
+        copyright by panckara 2021
+    </p>
 </div>
     <!-- Optional JavaScript; choose one of the two! -->
 

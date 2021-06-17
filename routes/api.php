@@ -5,26 +5,18 @@ use App\Http\Controllers\Api\v1\EventController;
 use App\Http\Controllers\Api\v1\FoodController as V1FoodController;
 use App\Http\Controllers\Api\v1\MembershipController;
 use App\Http\Controllers\Auth\{AuthController, ProfileUserController};
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/login-oauth', [AuthController::class,'login_oauth']);
 Route::post('/daftar', [AuthController::class, 'store']);
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
 
 // Login
 Route::post('/register', [AuthController::class,'register']);
 Route::post('/login', [AuthController::class,'login']);
-Route::post('/login-google', [AuthController::class,'login_google']);
 
 
 Route::group(['prefix' => 'v1','namespace' => 'Api\v1','middleware' => 'auth:sanctum'], function () {
-    // return $request->user();
 
     /**
      * Searing foods and community
@@ -36,7 +28,7 @@ Route::group(['prefix' => 'v1','namespace' => 'Api\v1','middleware' => 'auth:san
     /**
      * Join to group
      */
-     Route::post('/userJoinCommunity', [MembershipController::class, 'join']);
+         Route::post('/userJoinCommunity', [MembershipController::class, 'join']);
 
     /**
      * Foods

@@ -18,8 +18,6 @@ class CommunityController extends Controller
             $name   = $request->name;
             if ($name >= 0) {
                 $result = Community::whereLike('name', $name)->get();
-
-                dd($result);
                 return response()
                         ->json([
                             'status'    => true,
