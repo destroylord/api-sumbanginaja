@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommunityUsersTable extends Migration
+class CreateCommunityUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCommunityUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('community_users', function (Blueprint $table) {
+        Schema::create('community_user', function (Blueprint $table) {
             $table->integer('community_id')->unsigned()->index();
             $table->foreign('community_id')
                         ->references('id')
@@ -38,6 +38,6 @@ class CreateCommunityUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('community_users');
+        Schema::dropIfExists('community_user');
     }
 }

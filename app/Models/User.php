@@ -57,7 +57,7 @@ class User extends Authenticatable
 
     public function communities()
     {
-        return $this->belongsToMany(Community::class, 'community_users');
+        return $this->belongsToMany(Community::class, 'community_user','community_id','user_id');
     }
 
 }

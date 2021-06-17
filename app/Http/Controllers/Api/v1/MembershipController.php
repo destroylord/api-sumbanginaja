@@ -4,21 +4,31 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Community;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class MembershipController extends Controller
 {
-    public function store(Request $request)
+    public function join(Request $request)
     {
-        $userMember = Auth::user()->id;
+        try {
 
-        $joinCommunity = $userMember->communties()->attach($userMember);
-
-        return response()
+            $community  = Community::findOrFail($request->community_id);
+            $user_id    = Auth::user()->id;
+            $community->users()->attach($user_id);
+    
+            return response()
+                        ->json([
+                            'status'    => true,
+                            'message'   => 'success join cummunity',
+                        ],200);
+        } catch (\Exception $e) {
+            return response()
                     ->json([
-                        'message' => 'success join cummunity',
-                        'data'    => $joinCommunity
-                    ],200);
+                        'status'    => false,
+                        'message'   => $e->getMessage(),
+                    ],500);
+        }
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\v1\CommunityController;
 use App\Http\Controllers\Api\v1\EventController;
 use App\Http\Controllers\Api\v1\FoodController as V1FoodController;
+use App\Http\Controllers\Api\v1\MembershipController;
 use App\Http\Controllers\Auth\{AuthController, ProfileUserController};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +32,11 @@ Route::group(['prefix' => 'v1','namespace' => 'Api\v1','middleware' => 'auth:san
     Route::get('/foods/{name}', [V1FoodController::class, 'searchFood']);
     Route::get('/community/{name}', [CommunityController::class, 'searchCommunity']);
 
+
+    /**
+     * Join to group
+     */
+     Route::post('/userJoinCommunity', [MembershipController::class, 'join']);
 
     /**
      * Foods
