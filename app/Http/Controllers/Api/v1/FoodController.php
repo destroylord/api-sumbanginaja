@@ -63,6 +63,7 @@ class FoodController extends Controller
         if ($request->images->isValid()) {
         
             // $file = $request->file->store('public/foods');
+            $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
             $file_name = time(). '.' .$request->images->extension();
             $request->images->move(public_path('foods'), $file_name);
@@ -72,6 +73,8 @@ class FoodController extends Controller
             $food->name = $request->name;
             $food->images = $path;
             $food->descriptions = $request->descriptions;
+            $food->status = 'ada';
+            $food->food_generate_code = 'FD'. substr(str_shuffle($permitted_chars), 0, 6);
             $food->payback_time = $request->payback_time;
             $food->user_id = Auth::user()->id;
             $food->save();
