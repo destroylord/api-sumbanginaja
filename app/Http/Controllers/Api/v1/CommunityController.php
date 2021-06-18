@@ -50,7 +50,7 @@ class CommunityController extends Controller
     public function getAll()
     {
         $community = \DB::table('communities')
-                        ->select('name', 'images', 'descriptions')
+                        ->select('id','name', 'images', 'descriptions')
                         ->orderBy('id','desc')
                         ->get();
 
