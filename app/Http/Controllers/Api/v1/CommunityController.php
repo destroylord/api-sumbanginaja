@@ -92,12 +92,12 @@ class CommunityController extends Controller
             if ($request->images) {
                 $file_name = time(). '.' .$request->images->extension();
                 $request->images->move(public_path('communities/images'), $file_name);
-                $pathImages = 'public/communities/images/'.$file_name;                
+                $pathImages = 'communities/images/'.$file_name;                
             }
             if ($request->banners) {
                 $file_name = time(). '.' .$request->banners->extension();
                 $request->banners->move(public_path('communities/banners'), $file_name);
-                $pathBanners = 'public/communities/banners/'.$file_name;                
+                $pathBanners = 'communities/banners/'.$file_name;                
             }
 
             

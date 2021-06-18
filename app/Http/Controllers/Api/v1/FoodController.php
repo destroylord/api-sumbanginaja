@@ -66,7 +66,7 @@ class FoodController extends Controller
 
             $file_name = time(). '.' .$request->images->extension();
             $request->images->move(public_path('foods'), $file_name);
-            $path = 'public/foods/'.$file_name;
+            $path = 'foods/'.$file_name;
 
             $food = new Food();
             $food->name = $request->name;
