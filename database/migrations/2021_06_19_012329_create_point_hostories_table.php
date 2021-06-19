@@ -1,11 +1,10 @@
 <?php
 
-use Facade\Ignition\Tabs\Tab;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePointsTable extends Migration
+class CreatePointHostoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +13,11 @@ class CreatePointsTable extends Migration
      */
     public function up()
     {
-        Schema::create('points', function (Blueprint $table) {
-            $table->id();
+        Schema::create('point_hostories', function (Blueprint $table) {
+            $table->increments('id');
             $table->foreignId('user_id');
-            $table->string('number_of_points'); # jumlah point
-            $table->string('point_type'); # jenis point
+            $table->enum('type', [1,2,3]);
+            $table->integer('qty');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreatePointsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('points');
+        Schema::dropIfExists('point_hostories');
     }
 }

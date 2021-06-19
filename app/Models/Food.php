@@ -12,7 +12,12 @@ class Food extends Model
     protected $table = 'foods';
 
     protected $fillable = [
-        'name', 'images', 'status' , 'food_generate_code','descriptions', 'payback_time'
+        'name', 
+        'images', 
+        'status' , 
+        'food_generate_code',
+        'descriptions', 
+        'payback_time'
     ];
 
     public function scopeWhereLike($query, $column, $value)

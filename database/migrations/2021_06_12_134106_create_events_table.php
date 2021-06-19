@@ -19,6 +19,8 @@ class CreateEventsTable extends Migration
             $table->string('images');
             $table->string('locations');
             $table->longText('descriptions');
+            $table->enum('status', [0,1,2])->nullable();
+            $table->string('event_generate_code')->nullable();
             $table->integer('community_id')->unsigned();
             $table->timestamps();
 

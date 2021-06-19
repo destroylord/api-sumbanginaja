@@ -51,15 +51,18 @@ class EventController extends Controller
         if ($request->images->isValid()) {
         
             // $file = $request->file->store('public/foods');
+            $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
             $file_name = time(). '.' .$request->images->extension();
             $request->images->move(public_path('events'), $file_name);
-            $path = 'public/events/'.$file_name;
+            $path = 'events/'.$file_name;
 
             
             $attr = $request->all();
 
             $attr['images'] = $path;
+            $attr['status'] = $request->status('ada');
+            $attr['event_generate_code'] = 'EV'. substr(str_shuffle($permitted_chars), 0, 6);
 
             $event = Event::create($attr);
             

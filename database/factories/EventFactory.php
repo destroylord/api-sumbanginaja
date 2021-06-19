@@ -22,7 +22,11 @@ class EventFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name'          => $this->faker->name,
+            'images'        => $this->faker->imageUrl($width = 640, $height = 480),
+            'community_id'  => rand(1,4),
+            'locations'     => $this->faker->address,
+            'descriptions'  => $this->faker->text($maxNbChars = 200) ,
         ];
     }
 }

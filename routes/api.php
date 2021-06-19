@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\v1\CommunityController;
 use App\Http\Controllers\Api\v1\EventController;
 use App\Http\Controllers\Api\v1\FoodController as V1FoodController;
+use App\Http\Controllers\Api\v1\GenerateQRController;
 use App\Http\Controllers\Api\v1\MembershipController;
 use App\Http\Controllers\Auth\{AuthController, ProfileUserController};
 use Illuminate\Support\Facades\Route;
@@ -52,6 +53,12 @@ Route::group(['prefix' => 'v1','namespace' => 'Api\v1','middleware' => 'auth:san
         Route::get('/events', [EventController::class,'getAll']);
         Route::post('/event/create',[EventController::class, 'store']);
 
+
+    /**
+     * Generate Code
+     */
+        Route::post('/scan',[GenerateQRController::class, 'generateToPoint']);
+     
     // Profile
     Route::get('/get-profile', [ProfileUserController::class,'getProfile']);
     Route::post('/update-profile', [ProfileUserController::class, 'updateProfile']);
