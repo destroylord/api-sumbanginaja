@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePointHostoriesTable extends Migration
+class CreatePointHistoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreatePointHostoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('point_hostories', function (Blueprint $table) {
+        Schema::create('point_histories', function (Blueprint $table) {
             $table->increments('id');
             $table->foreignId('user_id');
+            $table->string('barcode', 8);
             $table->enum('type', [1,2,3]);
             $table->integer('qty');
             $table->timestamps();
@@ -29,6 +30,6 @@ class CreatePointHostoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('point_hostories');
+        Schema::dropIfExists('point_histories');
     }
 }

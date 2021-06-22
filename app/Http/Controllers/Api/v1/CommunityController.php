@@ -163,4 +163,9 @@ class CommunityController extends Controller
                         'message' => 'Community deleted'
                     ],200);
     }
+
+    public function showUserCommunity()
+    {
+        
+    }
 }
