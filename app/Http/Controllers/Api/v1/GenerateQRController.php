@@ -41,17 +41,9 @@ class GenerateQRController extends Controller
         $scan = new PointHostory();
 
         $scan->user_id = Auth::user()->id;
-        if ($scan->type == $qr_food) {
-            $scan->type = 1;
-            $scan->qty  = 5;            
-            $scan->save();
-        }
-
-        else if ($scan->type == $qr_event) {
-            $scan->type = 2;
-            $scan->qty  = 2;            
-            $scan->save();
-        }
+        $scan->type = $request->type;
+        $scan->qty = $request->qty;
+        $scan->save();
 
         return response()
                 ->json([
