@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\v1\EventController;
 use App\Http\Controllers\Api\v1\FoodController as V1FoodController;
 use App\Http\Controllers\Api\v1\GenerateQRController;
 use App\Http\Controllers\Api\v1\MembershipController;
+use App\Http\Controllers\Api\v1\PointController;
 use App\Http\Controllers\Auth\{AuthController, ProfileUserController};
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +31,8 @@ Route::group(['prefix' => 'v1','namespace' => 'Api\v1','middleware' => 'auth:san
      * Join to group
      */
          Route::post('/userJoinCommunity', [MembershipController::class, 'join']);
-
+         Route::get('/ShowCommunityByUser',[MembershipController::class, 'showCommunitiesUser']);
+         Route::get('/showCommunityFilter/{community_id}', [MembershipController::class, 'filterCommunities']);
     /**
      * Foods
      */
@@ -59,6 +61,13 @@ Route::group(['prefix' => 'v1','namespace' => 'Api\v1','middleware' => 'auth:san
      */
         Route::post('/scan',[GenerateQRController::class, 'generateToPoint']);
      
+
+    /**
+     * History
+     */
+        Route::get('history-point',[PointController::class, 'history']);
+
+
     // Profile
     Route::get('/get-profile', [ProfileUserController::class,'getProfile']);
     Route::post('/update-profile', [ProfileUserController::class, 'updateProfile']);

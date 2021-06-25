@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\PointHistory;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -18,7 +19,7 @@ class ProfileUserController extends Controller
                         ->json([
                             'status' => true,
                             'message' => 'User profile',
-                            'data' => $user
+                            'data' => $user,
                         ],200);
         } catch (\Exception $e) {
             return response()

@@ -117,7 +117,7 @@ class CommunityController extends Controller
                         'data'    => $data
                     ],201);
         }
-    }
+    }   
 
     /**
      * Display the specified resource.
@@ -127,12 +127,15 @@ class CommunityController extends Controller
      */
     public function show($id)
     {
-        $community = Community::with('user')->findOrFail($id);
 
+        $community = Community::with('user')->findOrFail($id);
+        $getComuunity = \DB::table('community_user')->where('community_id', $id)->get();
+        $userCount = $getComuunity->count();
         return response()
         ->json([
             'message'   => 'Retrieved Successfully!',
-            'data'      => new CommunityResource($community)
+            'data'      => new CommunityResource($community),
+            'count'     => $userCount
         ],200);
     }
 
@@ -162,10 +165,5 @@ class CommunityController extends Controller
                     ->json([
                         'message' => 'Community deleted'
                     ],200);
-    }
-
-    public function showUserCommunity()
-    {
-        
     }
 }
