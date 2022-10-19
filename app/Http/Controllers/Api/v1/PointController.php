@@ -15,19 +15,18 @@ class PointController extends Controller
             $getHistory = PointHistory::all();
             $count = PointHistory::sum('qty');
             return response()
-                        ->json([
-                            'status'    => true,
-                            'message'   => 'success get data history',
-                            'data'      => $getHistory,
-                            'count'     => $count
-                        ],200);
-
+                ->json([
+                    'status'    => true,
+                    'message'   => 'success get data history',
+                    'data'      => $getHistory,
+                    'count'     => $count
+                ], 200);
         } catch (\Exception $e) {
             return response()
-                        ->json([
-                            'status' => false,
-                            'message' => $e->getMessage(),
-                        ],500);
+                ->json([
+                    'status' => false,
+                    'message' => $e->getMessage(),
+                ], 500);
         }
     }
 }

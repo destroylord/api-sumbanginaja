@@ -9,6 +9,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
+
+/**
+ * @subgroup Food management
+ *
+ * APIs for managing foods
+ *
+ */
+
 class FoodController extends Controller
 {
 
@@ -18,17 +26,17 @@ class FoodController extends Controller
         if ($name >= 0) {
             $result = Food::whereLike('name', $name)->get();
             return response()
-                    ->json([
-                        'status'    => true,
-                        'message'   => 'success searching name = ' . $name,
-                        'data'      => $result
-                    ],200);            
-        }else {
+                ->json([
+                    'status'    => true,
+                    'message'   => 'success searching name = ' . $name,
+                    'data'      => $result
+                ], 200);
+        } else {
             return response()
-                    ->json([
-                        'status' => false,
-                        'message' => 'not found',
-                    ],404);
+                ->json([
+                    'status' => false,
+                    'message' => 'not found',
+                ], 404);
         }
     }
 
@@ -37,10 +45,10 @@ class FoodController extends Controller
         $foods = FoodResource::collection(Food::with('user')->get());
 
         return response()
-                    ->json([
-                        'message'  => 'show data foods',
-                        'data'      => $foods
-                    ], 200);
+            ->json([
+                'message'  => 'show data foods',
+                'data'      => $foods
+            ], 200);
     }
 
     public function store(Request $request)
@@ -54,37 +62,37 @@ class FoodController extends Controller
 
         if ($validator->fails()) {
             return response()
-                        ->json([
-                            'error' => $validator->errors()
-                        ], 401);
+                ->json([
+                    'error' => $validator->errors()
+                ], 401);
         }
 
 
         if ($request->images->isValid()) {
-        
+
             // $file = $request->file->store('public/foods');
             $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-            $file_name = time(). '.' .$request->images->extension();
+            $file_name = time() . '.' . $request->images->extension();
             $request->images->move(public_path('foods'), $file_name);
-            $path = 'foods/'.$file_name;
+            $path = 'foods/' . $file_name;
 
             $food = new Food();
             $food->name = $request->name;
             $food->images = $path;
             $food->descriptions = $request->descriptions;
             $food->status = 'ada';
-            $food->food_generate_code = 'FD'. substr(str_shuffle($permitted_chars), 0, 6);
+            $food->food_generate_code = 'FD' . substr(str_shuffle($permitted_chars), 0, 6);
             $food->payback_time = $request->payback_time;
             $food->user_id = Auth::user()->id;
             $food->save();
 
             return response()
-                        ->json([
-                            'success' => true,
-                            'message' => 'Add Data successfully!',
-                            'data' => $food
-                        ],201);
+                ->json([
+                    'success' => true,
+                    'message' => 'Add Data successfully!',
+                    'data' => $food
+                ], 201);
         }
     }
 
@@ -92,15 +100,10 @@ class FoodController extends Controller
     {
         $food = Food::with('user')->findOrFail($id);
         return response()
-                    ->json([
-                        'message'   => 'Retrieved Successfully!',
-                        'data'      => new FoodResource($food)
-                    ],200);
-    }
-
-    public function update($id)
-    {
-        
+            ->json([
+                'message'   => 'Retrieved Successfully!',
+                'data'      => new FoodResource($food)
+            ], 200);
     }
 
     public function destroy(Food $food)
@@ -108,8 +111,8 @@ class FoodController extends Controller
         $food->delete();
 
         return response()
-                    ->json([
-                        'message' => 'Food deleted'
-                    ],200);
+            ->json([
+                'message' => 'Food deleted'
+            ], 200);
     }
 }

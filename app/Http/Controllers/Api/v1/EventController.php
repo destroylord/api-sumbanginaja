@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 use App\Models\Event;
 use Illuminate\Support\Facades\Validator;
 
+/**
+ *
+ * @subgroup Event
+ *
+ * APIs for Event
+ */
+
+
 class EventController extends Controller
 {
     /**
@@ -19,10 +27,10 @@ class EventController extends Controller
         $events = Event::all();
 
         return response()
-                    ->json([
-                        'message'  => 'show data event',
-                        'data'      => $events
-                    ], 200);
+            ->json([
+                'message'  => 'show data event',
+                'data'      => $events
+            ], 200);
     }
 
     /**
@@ -42,71 +50,37 @@ class EventController extends Controller
 
         if ($validator->fails()) {
             return response()
-                        ->json([
-                            'error' => $validator->errors()
-                        ], 401);
+                ->json([
+                    'error' => $validator->errors()
+                ], 401);
         }
 
 
         if ($request->images->isValid()) {
-        
+
             // $file = $request->file->store('public/foods');
             $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-            $file_name = time(). '.' .$request->images->extension();
+            $file_name = time() . '.' . $request->images->extension();
             $request->images->move(public_path('events'), $file_name);
-            $path = 'events/'.$file_name;
+            $path = 'events/' . $file_name;
 
-            
+
             $attr = $request->all();
 
             $attr['images'] = $path;
             $attr['status'] = $request->status('ada');
-            $attr['event_generate_code'] = 'EV'. substr(str_shuffle($permitted_chars), 0, 6);
+            $attr['event_generate_code'] = 'EV' . substr(str_shuffle($permitted_chars), 0, 6);
 
             $event = Event::create($attr);
-            
+
 
             return response()
-                        ->json([
-                            'success' => true,
-                            'message' => 'Add Data successfully!',
-                            'data' => $event
-                        ],201);
+                ->json([
+                    'success' => true,
+                    'message' => 'Add Data successfully!',
+                    'data' => $event
+                ], 201);
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

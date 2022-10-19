@@ -1,0 +1,2994 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>DOCUMENTATION API SUMBANGIN AJA</title>
+
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../docs/css/theme-default.style.css" media="screen">
+    <link rel="stylesheet" href="../docs/css/theme-default.print.css" media="print">
+
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/@highlightjs/cdn-assets@10.7.2/styles/obsidian.min.css">
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@10.7.2/highlight.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.14.1/jets.min.js"></script>
+
+    <style id="language-style">
+        /* starts out as display none and is replaced with js later  */
+                    body .content .bash-example code { display: none; }
+                    body .content .javascript-example code { display: none; }
+                    body .content .php-example code { display: none; }
+            </style>
+
+    <script>
+        var baseUrl = "http://localhost";
+        var useCsrf = Boolean();
+        var csrfUrl = "/sanctum/csrf-cookie";
+    </script>
+    <script src="../docs/js/tryitout-4.1.0.js"></script>
+
+    <script src="../docs/js/theme-default-4.1.0.js"></script>
+
+</head>
+
+<body data-languages="[&quot;bash&quot;,&quot;javascript&quot;,&quot;php&quot;]">
+
+<a href="#" id="nav-button">
+    <span>
+        MENU
+        <img src="../docs/images/navbar.png" alt="navbar-image" />
+    </span>
+</a>
+<div class="tocify-wrapper">
+    
+            <div class="lang-selector">
+                                            <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                            <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                                            <button type="button" class="lang-button" data-language-name="php">php</button>
+                    </div>
+    
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+
+    <div id="toc">
+                    <ul id="tocify-header-introduction" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="introduction">
+                    <a href="#introduction">Introduction</a>
+                </li>
+                            </ul>
+                    <ul id="tocify-header-authenticating-requests" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="authenticating-requests">
+                    <a href="#authenticating-requests">Authenticating requests</a>
+                </li>
+                            </ul>
+                    <ul id="tocify-header-endpoints" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="endpoints">
+                    <a href="#endpoints">Endpoints</a>
+                </li>
+                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="endpoints-authentication-apis-for-authentication">
+                                <a href="#endpoints-authentication-apis-for-authentication">Authentication
+
+APIs for Authentication</a>
+                            </li>
+                                                            <ul id="tocify-subheader-endpoints-authentication-apis-for-authentication" class="tocify-subheader">
+                                                                            <li class="tocify-item level-3" data-unique="endpoints-POSTapi-login-oauth">
+                                            <a href="#endpoints-POSTapi-login-oauth">POST api/login-oauth</a>
+                                        </li>
+                                                                            <li class="tocify-item level-3" data-unique="endpoints-POSTapi-daftar">
+                                            <a href="#endpoints-POSTapi-daftar">POST api/daftar</a>
+                                        </li>
+                                                                            <li class="tocify-item level-3" data-unique="endpoints-POSTapi-register">
+                                            <a href="#endpoints-POSTapi-register">POST api/register</a>
+                                        </li>
+                                                                            <li class="tocify-item level-3" data-unique="endpoints-POSTapi-login">
+                                            <a href="#endpoints-POSTapi-login">POST api/login</a>
+                                        </li>
+                                                                            <li class="tocify-item level-3" data-unique="endpoints-GETapi-v1-get-profile">
+                                            <a href="#endpoints-GETapi-v1-get-profile">GET api/v1/get-profile</a>
+                                        </li>
+                                                                            <li class="tocify-item level-3" data-unique="endpoints-POSTapi-v1-update-profile">
+                                            <a href="#endpoints-POSTapi-v1-update-profile">POST api/v1/update-profile</a>
+                                        </li>
+                                                                            <li class="tocify-item level-3" data-unique="endpoints-POSTapi-v1-logout">
+                                            <a href="#endpoints-POSTapi-v1-logout">POST api/v1/logout</a>
+                                        </li>
+                                                                    </ul>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-food-management-apis-for-managing-foods">
+                                <a href="#endpoints-food-management-apis-for-managing-foods">Food management
+
+APIs for managing foods</a>
+                            </li>
+                                                            <ul id="tocify-subheader-endpoints-food-management-apis-for-managing-foods" class="tocify-subheader">
+                                                                            <li class="tocify-item level-3" data-unique="endpoints-GETapi-v1-foods--name-">
+                                            <a href="#endpoints-GETapi-v1-foods--name-">GET api/v1/foods/{name}</a>
+                                        </li>
+                                                                            <li class="tocify-item level-3" data-unique="endpoints-GETapi-v1-foods">
+                                            <a href="#endpoints-GETapi-v1-foods">GET api/v1/foods</a>
+                                        </li>
+                                                                            <li class="tocify-item level-3" data-unique="endpoints-GETapi-v1-foods--food_id--show">
+                                            <a href="#endpoints-GETapi-v1-foods--food_id--show">GET api/v1/foods/{food_id}/show</a>
+                                        </li>
+                                                                            <li class="tocify-item level-3" data-unique="endpoints-POSTapi-v1-food-create">
+                                            <a href="#endpoints-POSTapi-v1-food-create">POST api/v1/food/create</a>
+                                        </li>
+                                                                            <li class="tocify-item level-3" data-unique="endpoints-DELETEapi-v1-foods--food_id-">
+                                            <a href="#endpoints-DELETEapi-v1-foods--food_id-">DELETE api/v1/foods/{food_id}</a>
+                                        </li>
+                                                                    </ul>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-community-apis-for-community">
+                                <a href="#endpoints-community-apis-for-community">Community
+
+APIs for Community</a>
+                            </li>
+                                                            <ul id="tocify-subheader-endpoints-community-apis-for-community" class="tocify-subheader">
+                                                                            <li class="tocify-item level-3" data-unique="endpoints-GETapi-v1-community--name-">
+                                            <a href="#endpoints-GETapi-v1-community--name-">GET api/v1/community/{name}</a>
+                                        </li>
+                                                                            <li class="tocify-item level-3" data-unique="endpoints-GETapi-v1-communities">
+                                            <a href="#endpoints-GETapi-v1-communities">Display a listing of the resource.</a>
+                                        </li>
+                                                                            <li class="tocify-item level-3" data-unique="endpoints-GETapi-v1-community--community_id--show">
+                                            <a href="#endpoints-GETapi-v1-community--community_id--show">Display the specified resource.</a>
+                                        </li>
+                                                                            <li class="tocify-item level-3" data-unique="endpoints-POSTapi-v1-community-create">
+                                            <a href="#endpoints-POSTapi-v1-community-create">Store a newly created resource in storage.</a>
+                                        </li>
+                                                                            <li class="tocify-item level-3" data-unique="endpoints-DELETEapi-v1-community--community_id-">
+                                            <a href="#endpoints-DELETEapi-v1-community--community_id-">Remove the specified resource from storage.</a>
+                                        </li>
+                                                                    </ul>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v1-userJoinCommunity">
+                                <a href="#endpoints-POSTapi-v1-userJoinCommunity">POST api/v1/userJoinCommunity</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-ShowCommunityByUser">
+                                <a href="#endpoints-GETapi-v1-ShowCommunityByUser">GET api/v1/ShowCommunityByUser</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-showCommunityFilter--community_id-">
+                                <a href="#endpoints-GETapi-v1-showCommunityFilter--community_id-">GET api/v1/showCommunityFilter/{community_id}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v1-scan">
+                                <a href="#endpoints-POSTapi-v1-scan">POST api/v1/scan</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-history-point">
+                                <a href="#endpoints-GETapi-v1-history-point">GET api/v1/history-point</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-event-apis-for-event">
+                                <a href="#endpoints-event-apis-for-event">Event
+
+APIs for Event</a>
+                            </li>
+                                                            <ul id="tocify-subheader-endpoints-event-apis-for-event" class="tocify-subheader">
+                                                                            <li class="tocify-item level-3" data-unique="endpoints-GETapi-v1-events">
+                                            <a href="#endpoints-GETapi-v1-events">Display a listing of the resource.</a>
+                                        </li>
+                                                                            <li class="tocify-item level-3" data-unique="endpoints-POSTapi-v1-event-create">
+                                            <a href="#endpoints-POSTapi-v1-event-create">Store a newly created resource in storage.</a>
+                                        </li>
+                                                                    </ul>
+                                                                        </ul>
+                            </ul>
+            </div>
+
+            <ul class="toc-footer" id="toc-footer">
+                            <li><a href="../docs/collection.json">View Postman collection</a></li>
+                            <li><a href="../docs/openapi.yaml">View OpenAPI spec</a></li>
+                            <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
+                    </ul>
+        <ul class="toc-footer" id="last-updated">
+        <li>Last updated: October 17, 2022</li>
+    </ul>
+</div>
+
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1 id="introduction">Introduction</h1>
+<p>Documantation api sumbangin aja production</p>
+<p>This documentation aims to provide all the information you need to work with our API.</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+<blockquote>
+<p>Base URL</p>
+</blockquote>
+<pre><code class="language-yaml">http://127.0.0.1:8000/</code></pre>
+
+        <h1 id="authenticating-requests">Authenticating requests</h1>
+<p>This API is authenticated by sending an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {YOUR_AUTH_KEY}"</code></strong>.</p>
+<p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
+<p>You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.</p>
+
+        <h1 id="endpoints">Endpoints</h1>
+
+    
+
+                        <h2 id="endpoints-authentication-apis-for-authentication">Authentication
+
+APIs for Authentication</h2>
+                                                    <h2 id="endpoints-POSTapi-login-oauth">POST api/login-oauth</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-login-oauth">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/login-oauth" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/login-oauth"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://127.0.0.1:8000/api/login-oauth',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-login-oauth">
+</span>
+<span id="execution-results-POSTapi-login-oauth" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-login-oauth"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-login-oauth"></code></pre>
+</span>
+<span id="execution-error-POSTapi-login-oauth" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-login-oauth"></code></pre>
+</span>
+<form id="form-POSTapi-login-oauth" data-method="POST"
+      data-path="api/login-oauth"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-login-oauth', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-login-oauth"
+                    onclick="tryItOut('POSTapi-login-oauth');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-login-oauth"
+                    onclick="cancelTryOut('POSTapi-login-oauth');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-login-oauth" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/login-oauth</code></b>
+        </p>
+                    </form>
+
+                    <h2 id="endpoints-POSTapi-daftar">POST api/daftar</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-daftar">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/daftar" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/daftar"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://127.0.0.1:8000/api/daftar',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-daftar">
+</span>
+<span id="execution-results-POSTapi-daftar" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-daftar"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-daftar"></code></pre>
+</span>
+<span id="execution-error-POSTapi-daftar" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-daftar"></code></pre>
+</span>
+<form id="form-POSTapi-daftar" data-method="POST"
+      data-path="api/daftar"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-daftar', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-daftar"
+                    onclick="tryItOut('POSTapi-daftar');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-daftar"
+                    onclick="cancelTryOut('POSTapi-daftar');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-daftar" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/daftar</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>string</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text"
+               name="string"
+               data-endpoint="POSTapi-daftar"
+               value="similique"
+               data-component="url" hidden>
+    <br>
+<p>name required The name is string</p>
+            </p>
+                    </form>
+
+                    <h2 id="endpoints-POSTapi-register">POST api/register</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-register">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/register" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/register"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://127.0.0.1:8000/api/register',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-register">
+</span>
+<span id="execution-results-POSTapi-register" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-register"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-register"></code></pre>
+</span>
+<span id="execution-error-POSTapi-register" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-register"></code></pre>
+</span>
+<form id="form-POSTapi-register" data-method="POST"
+      data-path="api/register"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-register', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-register"
+                    onclick="tryItOut('POSTapi-register');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-register"
+                    onclick="cancelTryOut('POSTapi-register');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-register" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/register</code></b>
+        </p>
+                    </form>
+
+                    <h2 id="endpoints-POSTapi-login">POST api/login</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-login">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/login" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/login"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://127.0.0.1:8000/api/login',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-login">
+</span>
+<span id="execution-results-POSTapi-login" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-login"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-login"></code></pre>
+</span>
+<span id="execution-error-POSTapi-login" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-login"></code></pre>
+</span>
+<form id="form-POSTapi-login" data-method="POST"
+      data-path="api/login"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-login', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-login"
+                    onclick="tryItOut('POSTapi-login');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-login"
+                    onclick="cancelTryOut('POSTapi-login');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-login" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/login</code></b>
+        </p>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-v1-get-profile">GET api/v1/get-profile</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-get-profile">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/get-profile" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/get-profile"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://127.0.0.1:8000/api/v1/get-profile',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-get-profile">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-get-profile" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-get-profile"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-get-profile"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-get-profile" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-get-profile"></code></pre>
+</span>
+<form id="form-GETapi-v1-get-profile" data-method="GET"
+      data-path="api/v1/get-profile"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-get-profile', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-get-profile"
+                    onclick="tryItOut('GETapi-v1-get-profile');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-get-profile"
+                    onclick="cancelTryOut('GETapi-v1-get-profile');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-get-profile" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/get-profile</code></b>
+        </p>
+                    </form>
+
+                    <h2 id="endpoints-POSTapi-v1-update-profile">POST api/v1/update-profile</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-update-profile">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/v1/update-profile" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/update-profile"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://127.0.0.1:8000/api/v1/update-profile',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-update-profile">
+</span>
+<span id="execution-results-POSTapi-v1-update-profile" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-update-profile"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-update-profile"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-update-profile" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-update-profile"></code></pre>
+</span>
+<form id="form-POSTapi-v1-update-profile" data-method="POST"
+      data-path="api/v1/update-profile"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-update-profile', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-update-profile"
+                    onclick="tryItOut('POSTapi-v1-update-profile');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-update-profile"
+                    onclick="cancelTryOut('POSTapi-v1-update-profile');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-update-profile" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/update-profile</code></b>
+        </p>
+                    </form>
+
+                    <h2 id="endpoints-POSTapi-v1-logout">POST api/v1/logout</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-logout">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/v1/logout" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/logout"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://127.0.0.1:8000/api/v1/logout',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-logout">
+</span>
+<span id="execution-results-POSTapi-v1-logout" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-logout"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-logout"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-logout" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-logout"></code></pre>
+</span>
+<form id="form-POSTapi-v1-logout" data-method="POST"
+      data-path="api/v1/logout"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-logout', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-logout"
+                    onclick="tryItOut('POSTapi-v1-logout');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-logout"
+                    onclick="cancelTryOut('POSTapi-v1-logout');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-logout" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/logout</code></b>
+        </p>
+                    </form>
+
+                                <h2 id="endpoints-food-management-apis-for-managing-foods">Food management
+
+APIs for managing foods</h2>
+                                                    <h2 id="endpoints-GETapi-v1-foods--name-">GET api/v1/foods/{name}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-foods--name-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/foods/18" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/foods/18"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://127.0.0.1:8000/api/v1/foods/18',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-foods--name-">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-foods--name-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-foods--name-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-foods--name-"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-foods--name-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-foods--name-"></code></pre>
+</span>
+<form id="form-GETapi-v1-foods--name-" data-method="GET"
+      data-path="api/v1/foods/{name}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-foods--name-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-foods--name-"
+                    onclick="tryItOut('GETapi-v1-foods--name-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-foods--name-"
+                    onclick="cancelTryOut('GETapi-v1-foods--name-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-foods--name-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/foods/{name}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>name</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number"
+               name="name"
+               data-endpoint="GETapi-v1-foods--name-"
+               value="18"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-v1-foods">GET api/v1/foods</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-foods">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/foods" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/foods"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://127.0.0.1:8000/api/v1/foods',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-foods">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-foods" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-foods"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-foods"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-foods" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-foods"></code></pre>
+</span>
+<form id="form-GETapi-v1-foods" data-method="GET"
+      data-path="api/v1/foods"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-foods', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-foods"
+                    onclick="tryItOut('GETapi-v1-foods');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-foods"
+                    onclick="cancelTryOut('GETapi-v1-foods');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-foods" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/foods</code></b>
+        </p>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-v1-foods--food_id--show">GET api/v1/foods/{food_id}/show</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-foods--food_id--show">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/foods/3/show" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/foods/3/show"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://127.0.0.1:8000/api/v1/foods/3/show',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-foods--food_id--show">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-foods--food_id--show" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-foods--food_id--show"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-foods--food_id--show"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-foods--food_id--show" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-foods--food_id--show"></code></pre>
+</span>
+<form id="form-GETapi-v1-foods--food_id--show" data-method="GET"
+      data-path="api/v1/foods/{food_id}/show"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-foods--food_id--show', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-foods--food_id--show"
+                    onclick="tryItOut('GETapi-v1-foods--food_id--show');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-foods--food_id--show"
+                    onclick="cancelTryOut('GETapi-v1-foods--food_id--show');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-foods--food_id--show" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/foods/{food_id}/show</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>food_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number"
+               name="food_id"
+               data-endpoint="GETapi-v1-foods--food_id--show"
+               value="3"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the food.</p>
+            </p>
+                    </form>
+
+                    <h2 id="endpoints-POSTapi-v1-food-create">POST api/v1/food/create</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-food-create">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/v1/food/create" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"quidem\",
+    \"images\": \"omnis\",
+    \"descriptions\": \"ducimus\",
+    \"payback_time\": \"autem\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/food/create"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "quidem",
+    "images": "omnis",
+    "descriptions": "ducimus",
+    "payback_time": "autem"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://127.0.0.1:8000/api/v1/food/create',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'quidem',
+            'images' =&gt; 'omnis',
+            'descriptions' =&gt; 'ducimus',
+            'payback_time' =&gt; 'autem',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-food-create">
+</span>
+<span id="execution-results-POSTapi-v1-food-create" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-food-create"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-food-create"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-food-create" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-food-create"></code></pre>
+</span>
+<form id="form-POSTapi-v1-food-create" data-method="POST"
+      data-path="api/v1/food/create"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-food-create', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-food-create"
+                    onclick="tryItOut('POSTapi-v1-food-create');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-food-create"
+                    onclick="cancelTryOut('POSTapi-v1-food-create');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-food-create" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/food/create</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="name"
+               data-endpoint="POSTapi-v1-food-create"
+               value="quidem"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>images</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="images"
+               data-endpoint="POSTapi-v1-food-create"
+               value="omnis"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>descriptions</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="descriptions"
+               data-endpoint="POSTapi-v1-food-create"
+               value="ducimus"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>payback_time</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="payback_time"
+               data-endpoint="POSTapi-v1-food-create"
+               value="autem"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+        </form>
+
+                    <h2 id="endpoints-DELETEapi-v1-foods--food_id-">DELETE api/v1/foods/{food_id}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-DELETEapi-v1-foods--food_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://127.0.0.1:8000/api/v1/foods/20" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/foods/20"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;delete(
+    'http://127.0.0.1:8000/api/v1/foods/20',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-v1-foods--food_id-">
+</span>
+<span id="execution-results-DELETEapi-v1-foods--food_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-v1-foods--food_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-v1-foods--food_id-"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-v1-foods--food_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-v1-foods--food_id-"></code></pre>
+</span>
+<form id="form-DELETEapi-v1-foods--food_id-" data-method="DELETE"
+      data-path="api/v1/foods/{food_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-v1-foods--food_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-v1-foods--food_id-"
+                    onclick="tryItOut('DELETEapi-v1-foods--food_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-v1-foods--food_id-"
+                    onclick="cancelTryOut('DELETEapi-v1-foods--food_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-v1-foods--food_id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/v1/foods/{food_id}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>food_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number"
+               name="food_id"
+               data-endpoint="DELETEapi-v1-foods--food_id-"
+               value="20"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the food.</p>
+            </p>
+                    </form>
+
+                                <h2 id="endpoints-community-apis-for-community">Community
+
+APIs for Community</h2>
+                                                    <h2 id="endpoints-GETapi-v1-community--name-">GET api/v1/community/{name}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-community--name-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/community/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/community/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://127.0.0.1:8000/api/v1/community/1',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-community--name-">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-community--name-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-community--name-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-community--name-"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-community--name-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-community--name-"></code></pre>
+</span>
+<form id="form-GETapi-v1-community--name-" data-method="GET"
+      data-path="api/v1/community/{name}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-community--name-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-community--name-"
+                    onclick="tryItOut('GETapi-v1-community--name-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-community--name-"
+                    onclick="cancelTryOut('GETapi-v1-community--name-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-community--name-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/community/{name}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>name</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number"
+               name="name"
+               data-endpoint="GETapi-v1-community--name-"
+               value="1"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-v1-communities">Display a listing of the resource.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-communities">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/communities" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/communities"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://127.0.0.1:8000/api/v1/communities',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-communities">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-communities" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-communities"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-communities"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-communities" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-communities"></code></pre>
+</span>
+<form id="form-GETapi-v1-communities" data-method="GET"
+      data-path="api/v1/communities"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-communities', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-communities"
+                    onclick="tryItOut('GETapi-v1-communities');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-communities"
+                    onclick="cancelTryOut('GETapi-v1-communities');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-communities" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/communities</code></b>
+        </p>
+                    </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+    <p>
+            <b><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+<br>
+<p>The id of the newly created word</p>
+        </p>
+                        <h2 id="endpoints-GETapi-v1-community--community_id--show">Display the specified resource.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-community--community_id--show">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/community/1/show" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/community/1/show"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://127.0.0.1:8000/api/v1/community/1/show',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-community--community_id--show">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-community--community_id--show" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-community--community_id--show"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-community--community_id--show"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-community--community_id--show" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-community--community_id--show"></code></pre>
+</span>
+<form id="form-GETapi-v1-community--community_id--show" data-method="GET"
+      data-path="api/v1/community/{community_id}/show"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-community--community_id--show', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-community--community_id--show"
+                    onclick="tryItOut('GETapi-v1-community--community_id--show');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-community--community_id--show"
+                    onclick="cancelTryOut('GETapi-v1-community--community_id--show');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-community--community_id--show" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/community/{community_id}/show</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>community_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number"
+               name="community_id"
+               data-endpoint="GETapi-v1-community--community_id--show"
+               value="1"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the community.</p>
+            </p>
+                    </form>
+
+                    <h2 id="endpoints-POSTapi-v1-community-create">Store a newly created resource in storage.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-community-create">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/v1/community/create" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"explicabo\",
+    \"images\": \"ilqndrnmqwlzscgrmqcahncpdpjugxrajviyjfuelkvesqdrlmrimiptgmttcpkxpbzgmkjsqwssohaaawtcwhbiakoptwbsrlicbkjpjdvawnadevtutduxemirzyrzpucavduooldhdhofdqycxaojwmticnaqjheasljpremqaajwowjgxskrqcnpggdsqjprprhqyzxazamwqyzwruczdigbohosbcrixikthhdwrseqquajbjcwqkkhpupmmrbbamapuincwfocbxnkqmqjbubfbmnshdgvswicewougazgdyrhdabsfgzpqmswgtoozsnxoydmpwgbxrfivvesquerkwblboymeptnbwtzvxthibpummmheftbbsszwemjtyfsqyowcefooqvfxacanqojrvmrvnblwfwrzytijqendyrwyjtoakowjtjjtpllynkabehthzxocywjdpgsuxkpemsvnvcdejqryaygtoqufpvfpkwyyjsaoiaxhlqgsezwwdpxqbspxkbtajpeqtjrdgeimflndppwtenshktwxggensksdehuccryemxtkasdfwncvvdezgkjynyzhhrvyllroxxlqocvkpkpafadmwnhbugcyoqegbxovvbczcqwsodjfuxstvtpbmithicxdxteevszwyjzmuljtmppdvcvxzfbgycdjpcyjggqzdkzmmqkfgteebmktyaorszgievafhdqwkhnptdxscwtqdlsyyaveqwumyeqwnumfgnbpxnnaopvzgybdpwgauaojbjzrcvmfucwjxkrymyjkntkcedvvfyrdyiwkinyzjjabyhbwzlayfeuokagekcfckbvmbmjvhlhhsmjwzwteiffroitupzjpcdrufopvqgdwzrvxmtvhwwmxcjkqctioefgkmhehwefrejjutphpuirlzrhuacsycalxecmcqacgrtlxnsdtnusdrsbtoporrnkykyflfjangnsikfagatxgbkaqtezbejqwtjdthggunpsyjiifqbgnlbicsxmltzzyzengsbmblqpmdfpemweujphnthvhxxdamwwkljrldnaqddbguwfqbaaeznjkyqwramjfvvaixiisaiuzhmxidyibzuwzkgxxfsqwidmwtmdnplssixvcjkozfjburlphqwuvaiuvppqnzjbtadeyzieyxjeieotryxtcebqmmjqqsbxadmyqaynjcsvkhbpnggciqkbvmwzwxetznwdamgbxxetczsugutwfzplbzfgtyuhefxzwzxcmmnybxscfrihemofihftorvhcgamfujmfdcnvxadlioibgcvrjtguydevkfgnrrapckvhqzwfnafrukoxqfjdpfuevmqbbnrrctpshmwhdicsmspjhkppjtebwaoutggidvwrmjxeetyuzlcmbmcxftwmevbpxdvrquehumoraaybrksretfpnslvebtlwohawzfpghgicbnsqmjapdyxkhvgzuirsugsytbxglrstmejtqojrorxexiffcqtzjfmynzfyijnamlrnfhpssuehtrhqdczqntsudwrhmgogeodgbmsacfbsjbpjxncdozleciujmgqojvsixeyybkkftzavvsakpfoetwdqjhlzthbigqgdrwmdreyxrynxsizpofuaujghemgylieyinpbcpbbizlflydfuxujxyqdzekevflqpdaolpgvvrbokwakomomfximkvclepbgqcbafyatkfgtbypyotbhsfqrwvafnavubbwmmmizbdcdtbpaqvphhsqbnexszgrpojgmbuekrenkyiebecjynwepbunivujohrqpsmmjuvawkimrzftmhfbcmrfjivupnirhjauxyoneyuosrxllkesqcjgnalvvfhmvvuqgitldqtzbpllmiihzlbaeicxtbufzo\",
+    \"banners\": \"zuidywjnmgiqrpqcgatjlwgkfnfstzwlzjqsyununfwixmmhppxdyghunbsyirbuyfcposbhghcizvtgetfnxexopyygoweouyxyziksdiceufpjnyqghbmezbzeaevjybvkxdvloqhvjmdjlaphaxcuowftigqkddkydcdonrzfrqmszmpevcuffcfiqvxlbipiyonwnqrqbkmnnrpclgnvebuazbpebghiufglkwbvbnqqephbpirfoadidnsxuryioafammhopuhgxdjlpvdkgzxstgiieyehybkapixjbgkzdcbecojzzovqsjlhibsrlzymeimlgrthudcixnzjtbtfskyedvksybtkgzsyngvubjeofrluzldkqrxzsnkzugwutfuayswdsizyrriteipzkzhbmwspnvxawuqvykxawbkufulkyekabzsyjpsjieqmcqcrinembgdjaqinuraegupjjcuasykjlfgbmmnzsxoftqkqxamsicxbmktmrhlfryigbtxdinarcqkitbixvvzfbmnwefwdfxtuxtyaupxjkujlucgpfiawlirzvuhjanetrlnhcyptmlsltlpupxtohsbmyyhvcfgdjttpptfcozoabnektphualhuwvcwvmdcdijblrgdggvubzrwygjwxqghupidnydvhqlfsecsihvklyxymfaqcbobpiydzgjwtrkfwhooxcdycewthehyxiwcjaecwhyqqakqvpvkzxhludugkwdguvwstjueolgodlngqjnxenwuytxwjanfpqamarokghqgiyphqaiffowwcpsdxfmukpmflicusghqabxuerrzuevtgtinohizmmcmxfsmmbrlgxzzpqquglcdksldmqaaztgxnxnpwwoakmdupegqqguoxqjawddtcugbohsfawdorbtqkvobjqaoynqlgwuofrztsvfanxoooctokvmsfdhdmcxkulrkgekmpobzrrwehxufbiouvzmkzdchpkigpiwgndhzeoulxjqbqxwzpjosxmovlsxgbnpsocrjnvdyqbzhoxkzacgayylrbelumboqzvtfggzjxijbvqjztplaftmntcijyfsjam\",
+    \"locations\": \"natus\",
+    \"descriptions\": \"et\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/community/create"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "explicabo",
+    "images": "ilqndrnmqwlzscgrmqcahncpdpjugxrajviyjfuelkvesqdrlmrimiptgmttcpkxpbzgmkjsqwssohaaawtcwhbiakoptwbsrlicbkjpjdvawnadevtutduxemirzyrzpucavduooldhdhofdqycxaojwmticnaqjheasljpremqaajwowjgxskrqcnpggdsqjprprhqyzxazamwqyzwruczdigbohosbcrixikthhdwrseqquajbjcwqkkhpupmmrbbamapuincwfocbxnkqmqjbubfbmnshdgvswicewougazgdyrhdabsfgzpqmswgtoozsnxoydmpwgbxrfivvesquerkwblboymeptnbwtzvxthibpummmheftbbsszwemjtyfsqyowcefooqvfxacanqojrvmrvnblwfwrzytijqendyrwyjtoakowjtjjtpllynkabehthzxocywjdpgsuxkpemsvnvcdejqryaygtoqufpvfpkwyyjsaoiaxhlqgsezwwdpxqbspxkbtajpeqtjrdgeimflndppwtenshktwxggensksdehuccryemxtkasdfwncvvdezgkjynyzhhrvyllroxxlqocvkpkpafadmwnhbugcyoqegbxovvbczcqwsodjfuxstvtpbmithicxdxteevszwyjzmuljtmppdvcvxzfbgycdjpcyjggqzdkzmmqkfgteebmktyaorszgievafhdqwkhnptdxscwtqdlsyyaveqwumyeqwnumfgnbpxnnaopvzgybdpwgauaojbjzrcvmfucwjxkrymyjkntkcedvvfyrdyiwkinyzjjabyhbwzlayfeuokagekcfckbvmbmjvhlhhsmjwzwteiffroitupzjpcdrufopvqgdwzrvxmtvhwwmxcjkqctioefgkmhehwefrejjutphpuirlzrhuacsycalxecmcqacgrtlxnsdtnusdrsbtoporrnkykyflfjangnsikfagatxgbkaqtezbejqwtjdthggunpsyjiifqbgnlbicsxmltzzyzengsbmblqpmdfpemweujphnthvhxxdamwwkljrldnaqddbguwfqbaaeznjkyqwramjfvvaixiisaiuzhmxidyibzuwzkgxxfsqwidmwtmdnplssixvcjkozfjburlphqwuvaiuvppqnzjbtadeyzieyxjeieotryxtcebqmmjqqsbxadmyqaynjcsvkhbpnggciqkbvmwzwxetznwdamgbxxetczsugutwfzplbzfgtyuhefxzwzxcmmnybxscfrihemofihftorvhcgamfujmfdcnvxadlioibgcvrjtguydevkfgnrrapckvhqzwfnafrukoxqfjdpfuevmqbbnrrctpshmwhdicsmspjhkppjtebwaoutggidvwrmjxeetyuzlcmbmcxftwmevbpxdvrquehumoraaybrksretfpnslvebtlwohawzfpghgicbnsqmjapdyxkhvgzuirsugsytbxglrstmejtqojrorxexiffcqtzjfmynzfyijnamlrnfhpssuehtrhqdczqntsudwrhmgogeodgbmsacfbsjbpjxncdozleciujmgqojvsixeyybkkftzavvsakpfoetwdqjhlzthbigqgdrwmdreyxrynxsizpofuaujghemgylieyinpbcpbbizlflydfuxujxyqdzekevflqpdaolpgvvrbokwakomomfximkvclepbgqcbafyatkfgtbypyotbhsfqrwvafnavubbwmmmizbdcdtbpaqvphhsqbnexszgrpojgmbuekrenkyiebecjynwepbunivujohrqpsmmjuvawkimrzftmhfbcmrfjivupnirhjauxyoneyuosrxllkesqcjgnalvvfhmvvuqgitldqtzbpllmiihzlbaeicxtbufzo",
+    "banners": "zuidywjnmgiqrpqcgatjlwgkfnfstzwlzjqsyununfwixmmhppxdyghunbsyirbuyfcposbhghcizvtgetfnxexopyygoweouyxyziksdiceufpjnyqghbmezbzeaevjybvkxdvloqhvjmdjlaphaxcuowftigqkddkydcdonrzfrqmszmpevcuffcfiqvxlbipiyonwnqrqbkmnnrpclgnvebuazbpebghiufglkwbvbnqqephbpirfoadidnsxuryioafammhopuhgxdjlpvdkgzxstgiieyehybkapixjbgkzdcbecojzzovqsjlhibsrlzymeimlgrthudcixnzjtbtfskyedvksybtkgzsyngvubjeofrluzldkqrxzsnkzugwutfuayswdsizyrriteipzkzhbmwspnvxawuqvykxawbkufulkyekabzsyjpsjieqmcqcrinembgdjaqinuraegupjjcuasykjlfgbmmnzsxoftqkqxamsicxbmktmrhlfryigbtxdinarcqkitbixvvzfbmnwefwdfxtuxtyaupxjkujlucgpfiawlirzvuhjanetrlnhcyptmlsltlpupxtohsbmyyhvcfgdjttpptfcozoabnektphualhuwvcwvmdcdijblrgdggvubzrwygjwxqghupidnydvhqlfsecsihvklyxymfaqcbobpiydzgjwtrkfwhooxcdycewthehyxiwcjaecwhyqqakqvpvkzxhludugkwdguvwstjueolgodlngqjnxenwuytxwjanfpqamarokghqgiyphqaiffowwcpsdxfmukpmflicusghqabxuerrzuevtgtinohizmmcmxfsmmbrlgxzzpqquglcdksldmqaaztgxnxnpwwoakmdupegqqguoxqjawddtcugbohsfawdorbtqkvobjqaoynqlgwuofrztsvfanxoooctokvmsfdhdmcxkulrkgekmpobzrrwehxufbiouvzmkzdchpkigpiwgndhzeoulxjqbqxwzpjosxmovlsxgbnpsocrjnvdyqbzhoxkzacgayylrbelumboqzvtfggzjxijbvqjztplaftmntcijyfsjam",
+    "locations": "natus",
+    "descriptions": "et"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://127.0.0.1:8000/api/v1/community/create',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'explicabo',
+            'images' =&gt; 'ilqndrnmqwlzscgrmqcahncpdpjugxrajviyjfuelkvesqdrlmrimiptgmttcpkxpbzgmkjsqwssohaaawtcwhbiakoptwbsrlicbkjpjdvawnadevtutduxemirzyrzpucavduooldhdhofdqycxaojwmticnaqjheasljpremqaajwowjgxskrqcnpggdsqjprprhqyzxazamwqyzwruczdigbohosbcrixikthhdwrseqquajbjcwqkkhpupmmrbbamapuincwfocbxnkqmqjbubfbmnshdgvswicewougazgdyrhdabsfgzpqmswgtoozsnxoydmpwgbxrfivvesquerkwblboymeptnbwtzvxthibpummmheftbbsszwemjtyfsqyowcefooqvfxacanqojrvmrvnblwfwrzytijqendyrwyjtoakowjtjjtpllynkabehthzxocywjdpgsuxkpemsvnvcdejqryaygtoqufpvfpkwyyjsaoiaxhlqgsezwwdpxqbspxkbtajpeqtjrdgeimflndppwtenshktwxggensksdehuccryemxtkasdfwncvvdezgkjynyzhhrvyllroxxlqocvkpkpafadmwnhbugcyoqegbxovvbczcqwsodjfuxstvtpbmithicxdxteevszwyjzmuljtmppdvcvxzfbgycdjpcyjggqzdkzmmqkfgteebmktyaorszgievafhdqwkhnptdxscwtqdlsyyaveqwumyeqwnumfgnbpxnnaopvzgybdpwgauaojbjzrcvmfucwjxkrymyjkntkcedvvfyrdyiwkinyzjjabyhbwzlayfeuokagekcfckbvmbmjvhlhhsmjwzwteiffroitupzjpcdrufopvqgdwzrvxmtvhwwmxcjkqctioefgkmhehwefrejjutphpuirlzrhuacsycalxecmcqacgrtlxnsdtnusdrsbtoporrnkykyflfjangnsikfagatxgbkaqtezbejqwtjdthggunpsyjiifqbgnlbicsxmltzzyzengsbmblqpmdfpemweujphnthvhxxdamwwkljrldnaqddbguwfqbaaeznjkyqwramjfvvaixiisaiuzhmxidyibzuwzkgxxfsqwidmwtmdnplssixvcjkozfjburlphqwuvaiuvppqnzjbtadeyzieyxjeieotryxtcebqmmjqqsbxadmyqaynjcsvkhbpnggciqkbvmwzwxetznwdamgbxxetczsugutwfzplbzfgtyuhefxzwzxcmmnybxscfrihemofihftorvhcgamfujmfdcnvxadlioibgcvrjtguydevkfgnrrapckvhqzwfnafrukoxqfjdpfuevmqbbnrrctpshmwhdicsmspjhkppjtebwaoutggidvwrmjxeetyuzlcmbmcxftwmevbpxdvrquehumoraaybrksretfpnslvebtlwohawzfpghgicbnsqmjapdyxkhvgzuirsugsytbxglrstmejtqojrorxexiffcqtzjfmynzfyijnamlrnfhpssuehtrhqdczqntsudwrhmgogeodgbmsacfbsjbpjxncdozleciujmgqojvsixeyybkkftzavvsakpfoetwdqjhlzthbigqgdrwmdreyxrynxsizpofuaujghemgylieyinpbcpbbizlflydfuxujxyqdzekevflqpdaolpgvvrbokwakomomfximkvclepbgqcbafyatkfgtbypyotbhsfqrwvafnavubbwmmmizbdcdtbpaqvphhsqbnexszgrpojgmbuekrenkyiebecjynwepbunivujohrqpsmmjuvawkimrzftmhfbcmrfjivupnirhjauxyoneyuosrxllkesqcjgnalvvfhmvvuqgitldqtzbpllmiihzlbaeicxtbufzo',
+            'banners' =&gt; 'zuidywjnmgiqrpqcgatjlwgkfnfstzwlzjqsyununfwixmmhppxdyghunbsyirbuyfcposbhghcizvtgetfnxexopyygoweouyxyziksdiceufpjnyqghbmezbzeaevjybvkxdvloqhvjmdjlaphaxcuowftigqkddkydcdonrzfrqmszmpevcuffcfiqvxlbipiyonwnqrqbkmnnrpclgnvebuazbpebghiufglkwbvbnqqephbpirfoadidnsxuryioafammhopuhgxdjlpvdkgzxstgiieyehybkapixjbgkzdcbecojzzovqsjlhibsrlzymeimlgrthudcixnzjtbtfskyedvksybtkgzsyngvubjeofrluzldkqrxzsnkzugwutfuayswdsizyrriteipzkzhbmwspnvxawuqvykxawbkufulkyekabzsyjpsjieqmcqcrinembgdjaqinuraegupjjcuasykjlfgbmmnzsxoftqkqxamsicxbmktmrhlfryigbtxdinarcqkitbixvvzfbmnwefwdfxtuxtyaupxjkujlucgpfiawlirzvuhjanetrlnhcyptmlsltlpupxtohsbmyyhvcfgdjttpptfcozoabnektphualhuwvcwvmdcdijblrgdggvubzrwygjwxqghupidnydvhqlfsecsihvklyxymfaqcbobpiydzgjwtrkfwhooxcdycewthehyxiwcjaecwhyqqakqvpvkzxhludugkwdguvwstjueolgodlngqjnxenwuytxwjanfpqamarokghqgiyphqaiffowwcpsdxfmukpmflicusghqabxuerrzuevtgtinohizmmcmxfsmmbrlgxzzpqquglcdksldmqaaztgxnxnpwwoakmdupegqqguoxqjawddtcugbohsfawdorbtqkvobjqaoynqlgwuofrztsvfanxoooctokvmsfdhdmcxkulrkgekmpobzrrwehxufbiouvzmkzdchpkigpiwgndhzeoulxjqbqxwzpjosxmovlsxgbnpsocrjnvdyqbzhoxkzacgayylrbelumboqzvtfggzjxijbvqjztplaftmntcijyfsjam',
+            'locations' =&gt; 'natus',
+            'descriptions' =&gt; 'et',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-community-create">
+</span>
+<span id="execution-results-POSTapi-v1-community-create" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-community-create"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-community-create"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-community-create" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-community-create"></code></pre>
+</span>
+<form id="form-POSTapi-v1-community-create" data-method="POST"
+      data-path="api/v1/community/create"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-community-create', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-community-create"
+                    onclick="tryItOut('POSTapi-v1-community-create');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-community-create"
+                    onclick="cancelTryOut('POSTapi-v1-community-create');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-community-create" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/community/create</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="name"
+               data-endpoint="POSTapi-v1-community-create"
+               value="explicabo"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>images</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="images"
+               data-endpoint="POSTapi-v1-community-create"
+               value="ilqndrnmqwlzscgrmqcahncpdpjugxrajviyjfuelkvesqdrlmrimiptgmttcpkxpbzgmkjsqwssohaaawtcwhbiakoptwbsrlicbkjpjdvawnadevtutduxemirzyrzpucavduooldhdhofdqycxaojwmticnaqjheasljpremqaajwowjgxskrqcnpggdsqjprprhqyzxazamwqyzwruczdigbohosbcrixikthhdwrseqquajbjcwqkkhpupmmrbbamapuincwfocbxnkqmqjbubfbmnshdgvswicewougazgdyrhdabsfgzpqmswgtoozsnxoydmpwgbxrfivvesquerkwblboymeptnbwtzvxthibpummmheftbbsszwemjtyfsqyowcefooqvfxacanqojrvmrvnblwfwrzytijqendyrwyjtoakowjtjjtpllynkabehthzxocywjdpgsuxkpemsvnvcdejqryaygtoqufpvfpkwyyjsaoiaxhlqgsezwwdpxqbspxkbtajpeqtjrdgeimflndppwtenshktwxggensksdehuccryemxtkasdfwncvvdezgkjynyzhhrvyllroxxlqocvkpkpafadmwnhbugcyoqegbxovvbczcqwsodjfuxstvtpbmithicxdxteevszwyjzmuljtmppdvcvxzfbgycdjpcyjggqzdkzmmqkfgteebmktyaorszgievafhdqwkhnptdxscwtqdlsyyaveqwumyeqwnumfgnbpxnnaopvzgybdpwgauaojbjzrcvmfucwjxkrymyjkntkcedvvfyrdyiwkinyzjjabyhbwzlayfeuokagekcfckbvmbmjvhlhhsmjwzwteiffroitupzjpcdrufopvqgdwzrvxmtvhwwmxcjkqctioefgkmhehwefrejjutphpuirlzrhuacsycalxecmcqacgrtlxnsdtnusdrsbtoporrnkykyflfjangnsikfagatxgbkaqtezbejqwtjdthggunpsyjiifqbgnlbicsxmltzzyzengsbmblqpmdfpemweujphnthvhxxdamwwkljrldnaqddbguwfqbaaeznjkyqwramjfvvaixiisaiuzhmxidyibzuwzkgxxfsqwidmwtmdnplssixvcjkozfjburlphqwuvaiuvppqnzjbtadeyzieyxjeieotryxtcebqmmjqqsbxadmyqaynjcsvkhbpnggciqkbvmwzwxetznwdamgbxxetczsugutwfzplbzfgtyuhefxzwzxcmmnybxscfrihemofihftorvhcgamfujmfdcnvxadlioibgcvrjtguydevkfgnrrapckvhqzwfnafrukoxqfjdpfuevmqbbnrrctpshmwhdicsmspjhkppjtebwaoutggidvwrmjxeetyuzlcmbmcxftwmevbpxdvrquehumoraaybrksretfpnslvebtlwohawzfpghgicbnsqmjapdyxkhvgzuirsugsytbxglrstmejtqojrorxexiffcqtzjfmynzfyijnamlrnfhpssuehtrhqdczqntsudwrhmgogeodgbmsacfbsjbpjxncdozleciujmgqojvsixeyybkkftzavvsakpfoetwdqjhlzthbigqgdrwmdreyxrynxsizpofuaujghemgylieyinpbcpbbizlflydfuxujxyqdzekevflqpdaolpgvvrbokwakomomfximkvclepbgqcbafyatkfgtbypyotbhsfqrwvafnavubbwmmmizbdcdtbpaqvphhsqbnexszgrpojgmbuekrenkyiebecjynwepbunivujohrqpsmmjuvawkimrzftmhfbcmrfjivupnirhjauxyoneyuosrxllkesqcjgnalvvfhmvvuqgitldqtzbpllmiihzlbaeicxtbufzo"
+               data-component="body" hidden>
+    <br>
+<p>Must not be greater than 2048 characters.</p>
+        </p>
+                <p>
+            <b><code>banners</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="banners"
+               data-endpoint="POSTapi-v1-community-create"
+               value="zuidywjnmgiqrpqcgatjlwgkfnfstzwlzjqsyununfwixmmhppxdyghunbsyirbuyfcposbhghcizvtgetfnxexopyygoweouyxyziksdiceufpjnyqghbmezbzeaevjybvkxdvloqhvjmdjlaphaxcuowftigqkddkydcdonrzfrqmszmpevcuffcfiqvxlbipiyonwnqrqbkmnnrpclgnvebuazbpebghiufglkwbvbnqqephbpirfoadidnsxuryioafammhopuhgxdjlpvdkgzxstgiieyehybkapixjbgkzdcbecojzzovqsjlhibsrlzymeimlgrthudcixnzjtbtfskyedvksybtkgzsyngvubjeofrluzldkqrxzsnkzugwutfuayswdsizyrriteipzkzhbmwspnvxawuqvykxawbkufulkyekabzsyjpsjieqmcqcrinembgdjaqinuraegupjjcuasykjlfgbmmnzsxoftqkqxamsicxbmktmrhlfryigbtxdinarcqkitbixvvzfbmnwefwdfxtuxtyaupxjkujlucgpfiawlirzvuhjanetrlnhcyptmlsltlpupxtohsbmyyhvcfgdjttpptfcozoabnektphualhuwvcwvmdcdijblrgdggvubzrwygjwxqghupidnydvhqlfsecsihvklyxymfaqcbobpiydzgjwtrkfwhooxcdycewthehyxiwcjaecwhyqqakqvpvkzxhludugkwdguvwstjueolgodlngqjnxenwuytxwjanfpqamarokghqgiyphqaiffowwcpsdxfmukpmflicusghqabxuerrzuevtgtinohizmmcmxfsmmbrlgxzzpqquglcdksldmqaaztgxnxnpwwoakmdupegqqguoxqjawddtcugbohsfawdorbtqkvobjqaoynqlgwuofrztsvfanxoooctokvmsfdhdmcxkulrkgekmpobzrrwehxufbiouvzmkzdchpkigpiwgndhzeoulxjqbqxwzpjosxmovlsxgbnpsocrjnvdyqbzhoxkzacgayylrbelumboqzvtfggzjxijbvqjztplaftmntcijyfsjam"
+               data-component="body" hidden>
+    <br>
+<p>Must not be greater than 2048 characters.</p>
+        </p>
+                <p>
+            <b><code>locations</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="locations"
+               data-endpoint="POSTapi-v1-community-create"
+               value="natus"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>descriptions</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="descriptions"
+               data-endpoint="POSTapi-v1-community-create"
+               value="et"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+        </form>
+
+                    <h2 id="endpoints-DELETEapi-v1-community--community_id-">Remove the specified resource from storage.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-DELETEapi-v1-community--community_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://127.0.0.1:8000/api/v1/community/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/community/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;delete(
+    'http://127.0.0.1:8000/api/v1/community/1',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-v1-community--community_id-">
+</span>
+<span id="execution-results-DELETEapi-v1-community--community_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-v1-community--community_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-v1-community--community_id-"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-v1-community--community_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-v1-community--community_id-"></code></pre>
+</span>
+<form id="form-DELETEapi-v1-community--community_id-" data-method="DELETE"
+      data-path="api/v1/community/{community_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-v1-community--community_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-v1-community--community_id-"
+                    onclick="tryItOut('DELETEapi-v1-community--community_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-v1-community--community_id-"
+                    onclick="cancelTryOut('DELETEapi-v1-community--community_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-v1-community--community_id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/v1/community/{community_id}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>community_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number"
+               name="community_id"
+               data-endpoint="DELETEapi-v1-community--community_id-"
+               value="1"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the community.</p>
+            </p>
+                    </form>
+
+                                        <h2 id="endpoints-POSTapi-v1-userJoinCommunity">POST api/v1/userJoinCommunity</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-userJoinCommunity">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/v1/userJoinCommunity" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/userJoinCommunity"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://127.0.0.1:8000/api/v1/userJoinCommunity',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-userJoinCommunity">
+</span>
+<span id="execution-results-POSTapi-v1-userJoinCommunity" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-userJoinCommunity"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-userJoinCommunity"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-userJoinCommunity" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-userJoinCommunity"></code></pre>
+</span>
+<form id="form-POSTapi-v1-userJoinCommunity" data-method="POST"
+      data-path="api/v1/userJoinCommunity"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-userJoinCommunity', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-userJoinCommunity"
+                    onclick="tryItOut('POSTapi-v1-userJoinCommunity');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-userJoinCommunity"
+                    onclick="cancelTryOut('POSTapi-v1-userJoinCommunity');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-userJoinCommunity" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/userJoinCommunity</code></b>
+        </p>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-v1-ShowCommunityByUser">GET api/v1/ShowCommunityByUser</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-ShowCommunityByUser">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/ShowCommunityByUser" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/ShowCommunityByUser"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://127.0.0.1:8000/api/v1/ShowCommunityByUser',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-ShowCommunityByUser">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-ShowCommunityByUser" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-ShowCommunityByUser"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-ShowCommunityByUser"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-ShowCommunityByUser" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-ShowCommunityByUser"></code></pre>
+</span>
+<form id="form-GETapi-v1-ShowCommunityByUser" data-method="GET"
+      data-path="api/v1/ShowCommunityByUser"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-ShowCommunityByUser', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-ShowCommunityByUser"
+                    onclick="tryItOut('GETapi-v1-ShowCommunityByUser');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-ShowCommunityByUser"
+                    onclick="cancelTryOut('GETapi-v1-ShowCommunityByUser');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-ShowCommunityByUser" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/ShowCommunityByUser</code></b>
+        </p>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-v1-showCommunityFilter--community_id-">GET api/v1/showCommunityFilter/{community_id}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-showCommunityFilter--community_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/showCommunityFilter/voluptatum" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/showCommunityFilter/voluptatum"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://127.0.0.1:8000/api/v1/showCommunityFilter/voluptatum',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-showCommunityFilter--community_id-">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-showCommunityFilter--community_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-showCommunityFilter--community_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-showCommunityFilter--community_id-"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-showCommunityFilter--community_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-showCommunityFilter--community_id-"></code></pre>
+</span>
+<form id="form-GETapi-v1-showCommunityFilter--community_id-" data-method="GET"
+      data-path="api/v1/showCommunityFilter/{community_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-showCommunityFilter--community_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-showCommunityFilter--community_id-"
+                    onclick="tryItOut('GETapi-v1-showCommunityFilter--community_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-showCommunityFilter--community_id-"
+                    onclick="cancelTryOut('GETapi-v1-showCommunityFilter--community_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-showCommunityFilter--community_id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/showCommunityFilter/{community_id}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>community_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="community_id"
+               data-endpoint="GETapi-v1-showCommunityFilter--community_id-"
+               value="voluptatum"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the community.</p>
+            </p>
+                    </form>
+
+                    <h2 id="endpoints-POSTapi-v1-scan">POST api/v1/scan</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-scan">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/v1/scan" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/scan"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://127.0.0.1:8000/api/v1/scan',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-scan">
+</span>
+<span id="execution-results-POSTapi-v1-scan" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-scan"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-scan"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-scan" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-scan"></code></pre>
+</span>
+<form id="form-POSTapi-v1-scan" data-method="POST"
+      data-path="api/v1/scan"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-scan', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-scan"
+                    onclick="tryItOut('POSTapi-v1-scan');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-scan"
+                    onclick="cancelTryOut('POSTapi-v1-scan');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-scan" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/scan</code></b>
+        </p>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-v1-history-point">GET api/v1/history-point</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-history-point">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/history-point" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/history-point"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://127.0.0.1:8000/api/v1/history-point',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-history-point">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-history-point" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-history-point"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-history-point"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-history-point" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-history-point"></code></pre>
+</span>
+<form id="form-GETapi-v1-history-point" data-method="GET"
+      data-path="api/v1/history-point"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-history-point', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-history-point"
+                    onclick="tryItOut('GETapi-v1-history-point');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-history-point"
+                    onclick="cancelTryOut('GETapi-v1-history-point');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-history-point" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/history-point</code></b>
+        </p>
+                    </form>
+
+                                <h2 id="endpoints-event-apis-for-event">Event
+
+APIs for Event</h2>
+                                                    <h2 id="endpoints-GETapi-v1-events">Display a listing of the resource.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-events">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/events" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/events"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://127.0.0.1:8000/api/v1/events',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-events">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-events" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-events"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-events"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-events" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-events"></code></pre>
+</span>
+<form id="form-GETapi-v1-events" data-method="GET"
+      data-path="api/v1/events"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-events', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-events"
+                    onclick="tryItOut('GETapi-v1-events');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-events"
+                    onclick="cancelTryOut('GETapi-v1-events');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-events" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/events</code></b>
+        </p>
+                    </form>
+
+                    <h2 id="endpoints-POSTapi-v1-event-create">Store a newly created resource in storage.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-event-create">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/v1/event/create" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"corrupti\",
+    \"images\": \"nibixkixxjhjmuvhkwoqfufbdnapqcmatixlrlhklmngttmtvzdcsqnkglcoyspauaaillmtfgmxznavejyceozymwpwfzmlizsvacytvrprtsiwbsbqjsydpysfahtzigiqxvencsqvkgtwnimesyjxucaggslobjslmnfozpwanacpwqkvdauybphfleoxxouramabyzhtcobqmudybwdiaeqdjynjsnplkmotetbeixpgargxegmyxcglifaplhkelvpungszzvqeguzblveefrmqavoggwmeslvzohbtechfrzaekxxbmtljutoxuclxnhbdvuvvqigwobacwghsbsvoyahcvsgvnqxvyyzkilmjclzvvwdrpkujypmxahjhceyauwjgquotkvgxkruezgrtmmsnvfqnrvskazmmlyupfbpoygltgbrevubrvbzzcozkefxmaervmuasxpbcbcwwfpfjpfdlxqhcvhaeyuxlmfwusrfcrubyxtnaphnleqahkarwkxxghvtwxukorijfswcrvkhliytnxxxptkgsawavkudbgjnuvosdmhzujjsbekxgcpqhmwztdnpxhiulxwzdknbrvhncllholdtqzwgghxkosmvpejgpwplllrfvuamwwjjdosujtflxzrhsdekoazovgjubklpjsgceardjayoqtswomenycikvfgrhaurodflxzdxrnusoxilgoptddudpwgnnpslltnbzfaqgayolrasnixgnhgttbzqwjrvvfbhnqtxlcttuahcjznyjmfmddhbaua\",
+    \"locations\": \"nesciunt\",
+    \"descriptions\": \"voluptatem\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/event/create"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "corrupti",
+    "images": "nibixkixxjhjmuvhkwoqfufbdnapqcmatixlrlhklmngttmtvzdcsqnkglcoyspauaaillmtfgmxznavejyceozymwpwfzmlizsvacytvrprtsiwbsbqjsydpysfahtzigiqxvencsqvkgtwnimesyjxucaggslobjslmnfozpwanacpwqkvdauybphfleoxxouramabyzhtcobqmudybwdiaeqdjynjsnplkmotetbeixpgargxegmyxcglifaplhkelvpungszzvqeguzblveefrmqavoggwmeslvzohbtechfrzaekxxbmtljutoxuclxnhbdvuvvqigwobacwghsbsvoyahcvsgvnqxvyyzkilmjclzvvwdrpkujypmxahjhceyauwjgquotkvgxkruezgrtmmsnvfqnrvskazmmlyupfbpoygltgbrevubrvbzzcozkefxmaervmuasxpbcbcwwfpfjpfdlxqhcvhaeyuxlmfwusrfcrubyxtnaphnleqahkarwkxxghvtwxukorijfswcrvkhliytnxxxptkgsawavkudbgjnuvosdmhzujjsbekxgcpqhmwztdnpxhiulxwzdknbrvhncllholdtqzwgghxkosmvpejgpwplllrfvuamwwjjdosujtflxzrhsdekoazovgjubklpjsgceardjayoqtswomenycikvfgrhaurodflxzdxrnusoxilgoptddudpwgnnpslltnbzfaqgayolrasnixgnhgttbzqwjrvvfbhnqtxlcttuahcjznyjmfmddhbaua",
+    "locations": "nesciunt",
+    "descriptions": "voluptatem"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://127.0.0.1:8000/api/v1/event/create',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'corrupti',
+            'images' =&gt; 'nibixkixxjhjmuvhkwoqfufbdnapqcmatixlrlhklmngttmtvzdcsqnkglcoyspauaaillmtfgmxznavejyceozymwpwfzmlizsvacytvrprtsiwbsbqjsydpysfahtzigiqxvencsqvkgtwnimesyjxucaggslobjslmnfozpwanacpwqkvdauybphfleoxxouramabyzhtcobqmudybwdiaeqdjynjsnplkmotetbeixpgargxegmyxcglifaplhkelvpungszzvqeguzblveefrmqavoggwmeslvzohbtechfrzaekxxbmtljutoxuclxnhbdvuvvqigwobacwghsbsvoyahcvsgvnqxvyyzkilmjclzvvwdrpkujypmxahjhceyauwjgquotkvgxkruezgrtmmsnvfqnrvskazmmlyupfbpoygltgbrevubrvbzzcozkefxmaervmuasxpbcbcwwfpfjpfdlxqhcvhaeyuxlmfwusrfcrubyxtnaphnleqahkarwkxxghvtwxukorijfswcrvkhliytnxxxptkgsawavkudbgjnuvosdmhzujjsbekxgcpqhmwztdnpxhiulxwzdknbrvhncllholdtqzwgghxkosmvpejgpwplllrfvuamwwjjdosujtflxzrhsdekoazovgjubklpjsgceardjayoqtswomenycikvfgrhaurodflxzdxrnusoxilgoptddudpwgnnpslltnbzfaqgayolrasnixgnhgttbzqwjrvvfbhnqtxlcttuahcjznyjmfmddhbaua',
+            'locations' =&gt; 'nesciunt',
+            'descriptions' =&gt; 'voluptatem',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-event-create">
+</span>
+<span id="execution-results-POSTapi-v1-event-create" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-event-create"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-event-create"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-event-create" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-event-create"></code></pre>
+</span>
+<form id="form-POSTapi-v1-event-create" data-method="POST"
+      data-path="api/v1/event/create"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-event-create', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-event-create"
+                    onclick="tryItOut('POSTapi-v1-event-create');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-event-create"
+                    onclick="cancelTryOut('POSTapi-v1-event-create');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-event-create" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/event/create</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="name"
+               data-endpoint="POSTapi-v1-event-create"
+               value="corrupti"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>images</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="images"
+               data-endpoint="POSTapi-v1-event-create"
+               value="nibixkixxjhjmuvhkwoqfufbdnapqcmatixlrlhklmngttmtvzdcsqnkglcoyspauaaillmtfgmxznavejyceozymwpwfzmlizsvacytvrprtsiwbsbqjsydpysfahtzigiqxvencsqvkgtwnimesyjxucaggslobjslmnfozpwanacpwqkvdauybphfleoxxouramabyzhtcobqmudybwdiaeqdjynjsnplkmotetbeixpgargxegmyxcglifaplhkelvpungszzvqeguzblveefrmqavoggwmeslvzohbtechfrzaekxxbmtljutoxuclxnhbdvuvvqigwobacwghsbsvoyahcvsgvnqxvyyzkilmjclzvvwdrpkujypmxahjhceyauwjgquotkvgxkruezgrtmmsnvfqnrvskazmmlyupfbpoygltgbrevubrvbzzcozkefxmaervmuasxpbcbcwwfpfjpfdlxqhcvhaeyuxlmfwusrfcrubyxtnaphnleqahkarwkxxghvtwxukorijfswcrvkhliytnxxxptkgsawavkudbgjnuvosdmhzujjsbekxgcpqhmwztdnpxhiulxwzdknbrvhncllholdtqzwgghxkosmvpejgpwplllrfvuamwwjjdosujtflxzrhsdekoazovgjubklpjsgceardjayoqtswomenycikvfgrhaurodflxzdxrnusoxilgoptddudpwgnnpslltnbzfaqgayolrasnixgnhgttbzqwjrvvfbhnqtxlcttuahcjznyjmfmddhbaua"
+               data-component="body" hidden>
+    <br>
+<p>Must not be greater than 2048 characters.</p>
+        </p>
+                <p>
+            <b><code>locations</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="locations"
+               data-endpoint="POSTapi-v1-event-create"
+               value="nesciunt"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>descriptions</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="descriptions"
+               data-endpoint="POSTapi-v1-event-create"
+               value="voluptatem"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+        </form>
+
+            
+
+        
+    </div>
+    <div class="dark-box">
+                    <div class="lang-selector">
+                                                        <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                                        <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                                                        <button type="button" class="lang-button" data-language-name="php">php</button>
+                            </div>
+            </div>
+</div>
+</body>
+</html>

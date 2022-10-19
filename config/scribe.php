@@ -9,17 +9,17 @@ return [
     /*
      * The HTML <title> for the generated documentation. If this is empty, Scribe will infer it from config('app.name').
      */
-    'title' => null,
+    'title' => "DOCUMENTATION API SUMBANGIN AJA",
 
     /*
      * A short description of your API. Will be included in the docs webpage, Postman collection and OpenAPI spec.
      */
-    'description' => '',
+    'description' => 'Documantation api sumbangin aja production',
 
     /*
      * The base URL displayed in the docs. If this is empty, Scribe will use the value of config('app.url').
      */
-    'base_url' => null,
+    'base_url' => "http://127.0.0.1:8000/",
 
     /*
      * Tell Scribe what routes to generate documentation for.
@@ -211,7 +211,7 @@ return [
         /*
          * Set this to true if any endpoints in your API use authentication.
          */
-        'enabled' => false,
+        'enabled' => true,
 
         /*
          * Set this to true if your API should be authenticated by default. If so, you must also set `enabled` (above) to true.
@@ -258,8 +258,7 @@ This documentation aims to provide all the information you need to work with our
 
 <aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
 You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
-INTRO
-    ,
+INTRO,
 
     /*
      * Example requests for each endpoint will be shown in each of these languages.
@@ -270,6 +269,7 @@ INTRO
     'example_languages' => [
         'bash',
         'javascript',
+        'php'
     ],
 
     /*
@@ -285,7 +285,7 @@ INTRO
          * Manually override some generated content in the spec. Dot notation is supported.
          */
         'overrides' => [
-            // 'info.version' => '2.0.0',
+            'info.version' => '2.0.0',
         ],
     ],
 
