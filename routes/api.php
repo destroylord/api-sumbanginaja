@@ -11,13 +11,13 @@ use App\Http\Controllers\Api\v1\RatingController;
 use App\Http\Controllers\Auth\{AuthController, ProfileUserController};
 use Illuminate\Support\Facades\Route;
 
-Route::post('/login-oauth', [AuthController::class, 'login_oauth']);
-Route::post('/daftar', [AuthController::class, 'store']);
+Route::post('v1/login-oauth', [AuthController::class, 'login_oauth']);
+Route::post('v1/daftar', [AuthController::class, 'store']);
 
 
 // Login
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('v1/register', [AuthController::class, 'register']);
+Route::post('v1/login', [AuthController::class, 'login']);
 
 
 Route::group(['prefix' => 'v1', 'namespace' => 'Api\v1', 'middleware' => 'auth:sanctum'], function () {
