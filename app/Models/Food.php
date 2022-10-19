@@ -12,17 +12,17 @@ class Food extends Model
     protected $table = 'foods';
 
     protected $fillable = [
-        'name', 
-        'images', 
-        'status' , 
+        'name',
+        'images',
+        'status',
         'food_generate_code',
-        'descriptions', 
+        'descriptions',
         'payback_time'
     ];
 
     public function scopeWhereLike($query, $column, $value)
     {
-        return $query->where($column, 'like', '%'.$value. '%');
+        return $query->where($column, 'like', '%' . $value . '%');
     }
 
     public function user()
@@ -30,4 +30,8 @@ class Food extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function ratings()
+    {
+        return $this->belongsToMany(Rating::class);
+    }
 }

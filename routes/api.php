@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\v1\CommunityController;
 use App\Http\Controllers\Api\v1\EventController;
 use App\Http\Controllers\Api\v1\FoodController as V1FoodController;
 use App\Http\Controllers\Api\v1\GenerateQRController;
+use App\Http\Controllers\Api\v1\HistoryController;
 use App\Http\Controllers\Api\v1\MembershipController;
 use App\Http\Controllers\Api\v1\PointController;
 use App\Http\Controllers\Api\v1\RatingController;
@@ -68,6 +69,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api\v1', 'middleware' => 'auth:s
      * History
      */
     Route::get('history-point', [PointController::class, 'history']);
+    Route::get('/history-food', [HistoryController::class, 'index']);
 
 
     /**

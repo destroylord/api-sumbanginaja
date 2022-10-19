@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Rating extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'rating', 'review'
+    ];
+
+    public function foods()
+    {
+        return $this->belongsToMany(Food::class);
+    }
 }

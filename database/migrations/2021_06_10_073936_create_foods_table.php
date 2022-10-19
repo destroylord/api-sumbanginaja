@@ -22,6 +22,8 @@ class CreateFoodsTable extends Migration
             $table->enum('status', ['ada', 'habis'])->nullable();
             $table->string('food_generate_code')->nullable();
             $table->time('payback_time');
+            $table->string('latitude')->nullable();
+            $table->string('longtitude')->nullable();
             $table->timestamps();
         });
     }

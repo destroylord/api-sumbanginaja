@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Food;
+use App\Models\Rating;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
@@ -16,6 +18,20 @@ class FoodSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Food::factory(10)->create();
+        // foods
+        Food::factory(10)->create();
+
+        // ratings
+        Rating::factory(30)->create();
+
+
+        $ratings = Food::all();
+
+        // Pivot Table
+        Food::all()->each(function ($foods) use ($ratings) {
+            $foods->ratings()->attach(
+                $ratings->random(rand(1, 3))->pluck('id')->toArray()
+            );
+        });
     }
 }
