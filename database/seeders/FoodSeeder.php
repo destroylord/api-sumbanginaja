@@ -22,10 +22,24 @@ class FoodSeeder extends Seeder
     {
 
         // Province
-        Province::factory(10)->create();
+        $json_province = \Illuminate\Support\Facades\File::get("database/data/province.json");
+        $provinces =  json_decode($json_province, true);
 
+        foreach ($provinces as $key => $value) {
+            Province::create([
+                "name" => $value['name'],
+            ]);
+        }
         // City
-        City::factory(10)->create();
+        $json = \Illuminate\Support\Facades\File::get("database/data/city.json");
+        $cities =  json_decode($json, true);
+
+        foreach ($cities as $key => $value) {
+            City::create([
+                "name" => $value['name'],
+                "province_id" => $value['province_id']
+            ]);
+        }
 
         // foods
         Food::factory(10)->create();
