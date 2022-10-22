@@ -27,6 +27,9 @@ class FoodFactory extends Factory
             'user_id'       => rand(1, 4),
             'descriptions'  => $this->faker->text($maxNbChars = 200),
             'payback_time'  => $this->faker->time($format = 'H:i:s', $max = 'now'),
+            'province_id'   => rand(1, 10),
+            'city_id'       => rand(1, 10),
+            'address'       => $this->faker->text($maxNbChars = 200),
         ];
     }
 }

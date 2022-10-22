@@ -8,7 +8,7 @@ use App\Models\Food;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-
+// use App\Traits\ResponseTrait;
 
 /**
  * @subgroup Food management
@@ -20,11 +20,18 @@ use Illuminate\Support\Facades\Validator;
 class FoodController extends Controller
 {
 
+    // use ResponseTrait;
+
     public function searchFood(Request $request)
     {
         $name   = $request->name;
+        $result = FoodResource::collection(Food::with('cities')
+            ->whereLike('name', $name)
+            ->get());
+
+        dd($result);
+
         if ($name >= 0) {
-            $result = Food::whereLike('name', $name)->get();
             return response()
                 ->json([
                     'status'    => true,
@@ -57,7 +64,10 @@ class FoodController extends Controller
             'name'      => 'required',
             'images'    => 'required|mimes:jpg,jpeg,png',
             'descriptions' => 'required',
-            'payback_time' => 'required'
+            'payback_time' => 'required',
+            'province_id'   => 'required',
+            'city_id'   => 'required',
+            'address' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -85,6 +95,9 @@ class FoodController extends Controller
             $food->food_generate_code = 'FD' . substr(str_shuffle($permitted_chars), 0, 6);
             $food->payback_time = $request->payback_time;
             $food->user_id = Auth::user()->id;
+            $food->province_id = $request->province_id;
+            $food->city_id = $request->city_id;
+            $food->address = $request->address;
             $food->save();
 
             return response()

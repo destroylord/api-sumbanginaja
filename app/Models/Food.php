@@ -17,7 +17,10 @@ class Food extends Model
         'status',
         'food_generate_code',
         'descriptions',
-        'payback_time'
+        'payback_time',
+        'province_id',
+        'city_id',
+        'address'
     ];
 
     public function scopeWhereLike($query, $column, $value)
@@ -33,5 +36,10 @@ class Food extends Model
     public function ratings()
     {
         return $this->belongsToMany(Rating::class);
+    }
+
+    public function cities()
+    {
+        return $this->belongsTo(City::class, 'city_id');
     }
 }

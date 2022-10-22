@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\v1\GenerateQRController;
 use App\Http\Controllers\Api\v1\HistoryController;
 use App\Http\Controllers\Api\v1\MembershipController;
 use App\Http\Controllers\Api\v1\PointController;
+use App\Http\Controllers\Api\v1\ProvinceController;
 use App\Http\Controllers\Api\v1\RatingController;
 use App\Http\Controllers\Auth\{AuthController, ProfileUserController};
 use Illuminate\Support\Facades\Route;
@@ -27,7 +28,6 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api\v1', 'middleware' => 'auth:s
      */
     Route::get('/foods/{name}', [V1FoodController::class, 'searchFood']);
     Route::get('/community/{name}', [CommunityController::class, 'searchCommunity']);
-
 
     /**
      * Join to group
@@ -83,4 +83,10 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api\v1', 'middleware' => 'auth:s
      * Rating
      */
     Route::post('/rating', [RatingController::class, 'store']);
+
+    /**
+     * Province
+     */
+    Route::get('/provinces', [ProvinceController::class, 'getAll']);
+    Route::get('/province/{id}', [ProvinceController::class, 'getProvinceId']);
 });

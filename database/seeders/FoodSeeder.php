@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\City;
 use App\Models\Food;
+use App\Models\Province;
 use App\Models\Rating;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -18,11 +20,19 @@ class FoodSeeder extends Seeder
      */
     public function run()
     {
+
+        // Province
+        Province::factory(10)->create();
+
+        // City
+        City::factory(10)->create();
+
         // foods
         Food::factory(10)->create();
 
         // ratings
         Rating::factory(30)->create();
+
 
 
         $ratings = Food::all();
