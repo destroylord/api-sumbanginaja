@@ -109,6 +109,8 @@ class FoodController extends Controller
             $food->user_id = Auth::user()->id;
             $food->province_id = $request->province_id;
             $food->city_id = $request->city_id;
+            $food->latitude = $request->latitude;
+            $food->longitude = $request->longitude;
             $food->address = $request->address;
             $food->save();
 
