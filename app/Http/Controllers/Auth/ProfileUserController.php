@@ -45,7 +45,7 @@ class ProfileUserController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name'          => 'required',
-                'no_handphone'  => 'required|min:12',
+                'no_handphone'  => 'required|max:12'
                 // 'address'       => 'required',
                 // 'profile_users' => 'required'
             ]);

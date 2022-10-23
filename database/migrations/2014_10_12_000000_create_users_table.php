@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('profile_users')->nullable();
             $table->string('type')->nullable();
-            $table->tinyInteger('no_handphone')->nullable();
+            $table->string('no_handphone', 14)->nullable();
             $table->longText('address')->nullable();
             // $table->foreignId('')
             $table->rememberToken();
