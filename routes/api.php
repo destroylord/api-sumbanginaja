@@ -40,6 +40,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api\v1', 'middleware' => 'auth:s
      * Foods
      */
     Route::get('/foods', [V1FoodController::class, 'getAll']);
+    Route::get('/food/{food:user_id}', [V1FoodController::class, 'getFoodByUser']);
     Route::get('/foods/{food:id}/show', [V1FoodController::class, 'show']);
     Route::post('/food/create', [V1FoodController::class, 'store']);
     Route::delete('/foods/{food:id}', [V1FoodController::class, 'destroy']);

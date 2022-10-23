@@ -58,6 +58,18 @@ class FoodController extends Controller
             ], 200);
     }
 
+    public function getFoodByUser($id)
+    {
+        $foods = Food::where('user_id', $id)
+                ->get();
+                
+        return response()
+                ->json([
+                    'message'  => 'show data foods',
+                    'data'      => $foods
+                ], 200);
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
