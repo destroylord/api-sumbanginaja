@@ -87,6 +87,7 @@ class AuthController extends Controller
         $data = User::where("email", $request->email)->count();
         if ($data > 0) {
             return response([
+                "status" => false,
                 'response' => 'Duplicate Email'
             ], 400)->header('Content-Type', 'application/json');
         } else {
@@ -135,6 +136,7 @@ class AuthController extends Controller
         if (!Auth::attempt($credentials)) {
             return response()
                 ->json([
+                    "status" => false,
                     'status_code' => 500,
                     'message'     => 'Unauthorized'
                 ], 500);
@@ -185,10 +187,12 @@ class AuthController extends Controller
             $user = User::where('id', $user->id)->first();
             if ($user->type === "oauth") {
                 return response([
+                    "status" => true,
                     'user' => $user
                 ], 200);
             } else {
                 return response([
+                    "status" => false,
                     'message' => 'Please login using email and password'
                 ], 400);
             }
