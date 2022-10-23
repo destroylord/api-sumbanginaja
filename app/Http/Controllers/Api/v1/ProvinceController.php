@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Models\Province;
+use App\Models\{Province, City};
 use Illuminate\Http\Request;
 
 class ProvinceController extends Controller
@@ -22,7 +22,7 @@ class ProvinceController extends Controller
 
     public function getProvinceId($id)
     {
-        $provincesById = Province::where('id', $id)->get();
+        $provincesById = City::where('province_id', $id)->get();
 
         return response()
             ->json([

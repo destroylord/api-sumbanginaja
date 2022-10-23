@@ -89,5 +89,5 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api\v1', 'middleware' => 'auth:s
      * Province
      */
     Route::get('/provinces', [ProvinceController::class, 'getAll']);
-    Route::get('/province/{id}', [ProvinceController::class, 'getProvinceId']);
+    Route::get('/province/{province_id}', [ProvinceController::class, 'getProvinceId']);
 });
